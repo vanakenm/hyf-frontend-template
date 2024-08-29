@@ -17,7 +17,7 @@ graph TD
     D --> D2[Order History]
 ```
 
-Stores & Restaurants Journey Diagram
+Stores & Restaurants Journey Diagram:
 
 ```mermaid
 graph TD
