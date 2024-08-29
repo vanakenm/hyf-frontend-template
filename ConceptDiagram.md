@@ -24,7 +24,7 @@ graph TD
     A[Food Providers: Stores/restaurants with excess food.] --> B[Identify Excess Food: Determine available food.]
     B --> B1[Log in to the app]
     B --> B2[Choose pickup date]
-    B --> B3[Select volunteer organization]
+    B --> B3[Select box categoty]
     B --> B4[Specify food box quantity]
     B --> B5[Confirm donation]
     A --> C[Box Management: Manage food boxes for donation.]
