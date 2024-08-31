@@ -12,7 +12,7 @@ graph TD
     C --> C2[Red Marker: Indicates no availability.]
     E --> E1[Food Type Filter: Select food categories - manual, vegetarian, bakery, etc.]
     E --> E2[Store Type Filter: Filter by restaurant, grocery store.]
-    E --> E3[Distance Filter: Adjust range from the user's location.]
+    E --> E3[possibly unnecessary Distance Filter: Adjust range from the user's location.]
 ```
 
 2. Store/Restaurant Detail Dialog Flow
@@ -44,7 +44,6 @@ graph TD
 graph TD
     A[User Profile & History Screen] --> B[Profile Details: View and edit user information.]
     A --> C[Order History: List of past reservations and statuses.]
-    A --> D[Volunteer Opt-In: Option to register as a volunteer to pick up boxes for others.]
 
     C --> C1[Reservation Status: View past and current reservations.]
     D --> D1[Request for volunteer status. Allows you to book more than 2 boxes in one location.]
