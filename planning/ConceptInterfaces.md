@@ -3,13 +3,14 @@
 This document describes the main concepts of the user interface for **CareFood** both for **User-Seekers** and **Providers**.
 
 ## Table of Contents
-1. [Home Screen Flow (User-Seeker)](#home-screen-flow-user-seeker)
-2. [Store/Restaurant Detail Dialog Flow (User-Seeker)](#store-restaurant-detail-dialog-flow-user-seeker)
-3. [Reservation Confirmation Dialog Flow (User-Seeker)](#reservation-confirmation-dialog-flow-user-seeker)
-4. [User Profile & History Screen Flow (User-Seeker)](#user-profile--history-screen-flow-user-seeker)
-5. [Weekly Plan & Reservation Flow (Provider)](#weekly-plan--reservation-flow-provider)
-6. [Interaction Flow Diagram with Transitions](#interaction-flow-diagram-with-transitions-updated)
-7. [Explanation of the Transitions](#explanation-of-the-transitions)
+
+1. [Home Screen Flow (User-Seeker)](#1-home-screen-flow-user-seeker)
+2. [Store/Restaurant Detail Dialog Flow (User-Seeker)](#2-storerestaurant-detail-dialog-flow-user-seeker)
+3. [Reservation Confirmation Dialog Flow (User-Seeker)](#3-reservation-confirmation-dialog-flow-user-seeker)
+4. [User Profile & History Screen Flow (User-Seeker)](#4-user-profile--history-screen-flow-user-seeker)
+5. [Weekly Plan & Reservation Flow (Provider)](#5-weekly-plan--reservation-flow-provider)
+6. [Interaction Flow Diagram with Transitions](#6-interaction-flow-diagram-with-transitions)
+7. [Explanation of the Transitions](#7-explanation-of-the-transitions)
 
 ---
 
@@ -24,6 +25,8 @@ graph TD
     A -->|Click profile| E[User Profile & History Screen]
 ```
 
+[Back to top](#table-of-contents)
+
 ### 2. Store/Restaurant Detail Dialog Flow (User-Seeker)
 
 ```mermaid
@@ -31,6 +34,8 @@ graph TD
     A[Store/Restaurant Detail Dialog] -->|Click reserve| B[Reservation Confirmation Dialog]
     A -->|Click back| C[Home Screen]
 ```
+
+[Back to top](#table-of-contents)
 
 ### 3. Reservation Confirmation Dialog Flow (User-Seeker)
 
@@ -42,6 +47,8 @@ graph TD
     A -->|Cancel| D[Store/Restaurant Detail Dialog]
 ```
 
+[Back to top](#table-of-contents)
+
 ### 4. User Profile & History Screen Flow (User-Seeker)
 
 ```mermaid
@@ -51,6 +58,8 @@ graph TD
     A -->|Edit profile| D[Edit Profile]
     A -->|Logout| E[Logout]
 ```
+
+[Back to top](#table-of-contents)
 
 ### 5. Weekly Plan & Reservation Flow (Provider)
 
@@ -71,6 +80,8 @@ graph TD
 
 ```
 
+[Back to top](#table-of-contents)
+
 ### 6. Interaction Flow Diagram with Transitions
 
 ```mermaid
@@ -86,6 +97,8 @@ graph TD
     F --> H[Current Reservations]
     F --> I[Edit Profile]
 ```
+
+[Back to top](#table-of-contents)
 
 ### 7. Explanation of the Transitions
 
@@ -118,3 +131,5 @@ graph TD
     - In **Reservation Mode**, providers can see the reservations made by users and the remaining availability for each day.
     - For example, if 5 boxes are available and 3 are reserved, the board will show "3/5".
     - Providers can prepare the necessary number of boxes according to user reservations, ensuring that no more boxes are reserved than available in the plan.
+
+[Back to top](#table-of-contents)
