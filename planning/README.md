@@ -58,20 +58,78 @@ The database structure supports the management of both users and providers, ensu
    - Basic user information (name, contact details).
    - Preferences (Standard, Vegan, Diabetic).
    - Reservation history.
-   
+
+    Table structure:
+
+    ```sql
+    CREATE TABLE Users (
+    user_id INT PRIMARY KEY,
+    user_type ENUM('seeker', 'provider'),
+    name VARCHAR(100),
+    email VARCHAR(100),
+    password_hash VARCHAR(255),
+    preferences JSON, -- {"Standard": true, "Vegan": false, "Diabetic": true}
+    address VARCHAR(255), -- For providers
+    description TEXT, -- For providers
+    coordinates POINT, -- For providers, optional
+    reservation_history JSON -- List of reservations for seekers
+    );
+    ```
+
 2. **Providers**:
    - Store/restaurant details (name, address, coordinates).
    - Weekly box plan (date, box types, quantities).
    - Reservation records.
+
+   Table structure:
+
+   ```sql
+   CREATE TABLE Stores (
+    store_id INT PRIMARY KEY,
+    store_name VARCHAR(100),
+    address VARCHAR(255),
+    description TEXT,
+    coordinates POINT,
+    weekly_box_plan JSON -- {"Monday": {"Standard": 10, "Vegan": 5, "Diabetic": 2}, ...}
+    );
+    ```
 
 3. **Food Boxes**:
    - Box details (type: Standard, Vegan, Diabetic).
    - Availability per day.
    - Reservation status.
 
+    Table structure:
+
+    ```sql
+   CREATE TABLE Food_Boxes (
+    box_id INT PRIMARY KEY,
+    store_id INT,
+    box_type ENUM('Standard', 'Vegan', 'Diabetic'),
+    available_count INT,
+    reserved_count INT,
+    date DATE,
+    FOREIGN KEY (store_id) REFERENCES Stores(store_id)
+    );
+    ```
+
 4. **Reservations**:
    - User ID, Box ID, and Date.
    - Status (Reserved/Available).
+
+    Table structure:
+
+    ```sql
+    CREATE TABLE Reservations (
+    reservation_id INT PRIMARY KEY,
+    user_id INT,
+    box_id INT,
+    reservation_date DATE,
+    reservation_status ENUM('reserved', 'issued', 'cancelled'),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (box_id) REFERENCES Food_Boxes(box_id)
+    );
+    ```
 
 ---
 
