@@ -31,7 +31,7 @@ graph TD
 
 ```mermaid
 graph TD
-    A[Store Detail Dialog] -->|Click reserve| B[ Reservation Confirmation Dialog]
+    A[Store Detail Dialog] -->|Click reserve| B[ ReservConfirm Dialog]
     A -->|Click back| C[Home Screen]
 ```
 
@@ -53,7 +53,7 @@ graph TD
 
 ```mermaid
 graph TD
-    A[User Profile & History Screen] -->|View history| B[Reservation History]
+    A[ User Profile & History Screen] -->|View history| B[Reservation History]
     A -->|View current reservations| C[Current Reservations]
     A -->|Edit profile| D[Edit Profile]
     A -->|Logout| E[Logout]
@@ -69,14 +69,14 @@ graph TD
     A --> H[Sunday]
 
     %% Box Types (horizontal for Mon-Sat)
-    B --> B1[Standard Box - Reserved/Quantity]
-    B --> B2[Vegan Box - Reserved/Quantity]
-    B --> B3[Diabetic Box - Reserved/Quantity]
+    B --> B1[ Standard Box - Reserved/Quantity]
+    B --> B2[ Vegan Box - Reserved/Quantity]
+    B --> B3[ Diabetic Box - Reserved/Quantity]
 
     %% Box Types (horizontal for Sunday)
-    H --> H1[Standard Box - Reserved/Quantity]
-    H --> H2[Vegan Box - Reserved/Quantity]
-    H --> H3[Diabetic Box - Reserved/Quantity]
+    H --> H1[ Standard Box - Reserved/Quantity]
+    H --> H2[ Vegan Box - Reserved/Quantity]
+    H --> H3[ Diabetic Box - Reserved/Quantity]
 
 ```
 
