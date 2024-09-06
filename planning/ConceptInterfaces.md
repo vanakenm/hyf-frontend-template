@@ -18,11 +18,11 @@ This document describes the main concepts of the user interface for **CareFood**
 
 ```mermaid
 graph TD
-    A[Home Screen] -->|Click on store| B[Store/Restaurant Detail Dialog]
+    A[Home Screen] -->|Click on store| B[ Store/Restaurant Detail Dialog]
     B -->|Reserve box| C[Reservation Confirmation Dialog]
-    C -->|Not logged in| D[Login/Registration]
+    C -->|Not logged in| D[ Login/Registration ]
     D -->|Logged in| C
-    A -->|Click profile| E[User Profile & History Screen]
+    A -->|Click profile| E[User Profile/History Screen]
 ```
 
 [Back to top](#table-of-contents)
