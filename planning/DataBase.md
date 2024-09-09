@@ -66,7 +66,17 @@ erDiagram
 
 ### Database Creation SQL
 
-Here are the SQL queries needed to create the database structure for the CareFood project.
+1. You can use sql-file for create database on local PC:
+
+[carefood.sql](/planning/carefood.sql)
+
+```
+mysql -u "root" -p < carefood.sql
+```
+
+enter your password when asked
+
+2. Here are the SQL queries needed to create the database structure for the CareFood project.
 
 Create the database:
 
@@ -154,17 +164,8 @@ CREATE TABLE reservations (
 
 ### Data Insertion Example
 
-1. You can use sql-file for create database on local PC:
 
-[carefood.sql](/planning/carefood.sql)
-
-```
-mysql -u "root" -p < carefood.sql
-```
-
-enter your password when asked
-
-2. Here are sample SQL queries for inserting data for three food providers, two user accounts, and weekly plans starting from September 9, 2024
+Here are sample SQL queries for inserting data for three food providers, two user accounts, and weekly plans starting from September 9, 2024
 
 Insert providers:
 
