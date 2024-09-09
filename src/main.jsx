@@ -4,7 +4,7 @@ import App from "./App.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RecipesPage from "./RecipesPage.jsx";
-import Navigation from "./components/NavBar.jsx";
+import Navigation from "./components/Navbar/NavBar.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <App />, errorElement: <Error /> },
