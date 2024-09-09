@@ -351,6 +351,103 @@ WHERE provider_id = 1 AND week_start = '2024-09-10';
 
 [We check the data update, taking into account the reserve](#query-for-all-stores)
 
+4. **Show all reserved boxes on (2024-09-10) by store 1:**
+
+```sql
+SELECT r.id, u.name AS user_name, b.type AS box_type, r.quantity
+FROM reservations r
+JOIN users u ON r.user_id = u.id
+JOIN boxes b ON r.box_id = b.id
+WHERE r.provider_id = 1 AND r.reservation_date = '2024-09-10';
+```
+
+result:
+
+```
++----+-----------+-----------+----------+
+| id | user_name | box_type  | quantity |
++----+-----------+-----------+----------+
+|  1 | John Smith| Standard  |        1 |
++----+-----------+-----------+----------+
+```
+
+5. **Show all reserved boxes for all stores:**
+
+```sql
+SELECT r.id, p.name AS provider_name, u.name AS user_name, b.type AS box_type, r.quantity, r.reservation_date
+FROM reservations r
+JOIN users u ON r.user_id = u.id
+JOIN providers p ON r.provider_id = p.id
+JOIN boxes b ON r.box_id = b.id;
+```
+
+result:
+
+```
++----+----------------+-----------+-----------+----------+----------------+
+| id | provider_name  | user_name | box_type  | quantity | reservation_date|
++----+----------------+-----------+-----------+----------+----------------+
+|  1 | Lidl           | John Smith| Standard  |        1 | 2024-09-10      |
++----+----------------+-----------+-----------+----------+----------------+
+```
+
+6. **Show all bookings by John Smith:**
+
+```sql
+SELECT r.id, p.name AS provider_name, b.type AS box_type, r.quantity, r.reservation_date
+FROM reservations r
+JOIN providers p ON r.provider_id = p.id
+JOIN boxes b ON r.box_id = b.id
+JOIN users u ON r.user_id = u.id
+WHERE u.name = 'John Smith';
+```
+
+result:
+
+```
++----+----------------+-----------+----------+----------------+
+| id | provider_name  | box_type  | quantity | reservation_date|
++----+----------------+-----------+----------+----------------+
+|  1 | Lidl           | Standard  |        1 | 2024-09-10      |
++----+----------------+-----------+----------+----------------+
+```
+
+7. Request to receive weekly plan of store 1 from September 9 to 14:
+
+```sql
+SELECT week_start, standard_quantity, vegan_quantity, diabetic_quantity, pickup_time
+FROM weekly_plans
+WHERE provider_id = 1
+AND week_start BETWEEN '2024-09-09' AND '2024-09-14';
+```
+
+result:
+
+```+-------------+-------------------+----------------+-------------------+-------------+
+| week_start  | standard_quantity | vegan_quantity | diabetic_quantity | pickup_time |
++-------------+-------------------+----------------+-------------------+-------------+
+| 2024-09-09  | 8                 | 3              | 1                 | 17:30:00    |
+| 2024-09-10  | 6                 | 3              | 1                 | 17:30:00    |
+| 2024-09-11  | 8                 | 3              | 1                 | 17:30:00    |
+| 2024-09-12  | 8                 | 3              | 1                 | 17:30:00    |
+| 2024-09-13  | 8                 | 3              | 1                 | 17:30:00    |
+| 2024-09-14  | 10                | 4              | 2                 | 17:30:00    |
++-------------+-------------------+----------------+-------------------+-------------+
+```
+
+8. Request to extend weekly plan for store 1 (September 23-28) for next week:
+
+
+```sql
+INSERT INTO weekly_plans (provider_id, week_start, standard_quantity, vegan_quantity, diabetic_quantity, pickup_time)
+SELECT provider_id, DATE_ADD(week_start, INTERVAL 7 DAY), standard_quantity, vegan_quantity, diabetic_quantity, pickup_time
+FROM weekly_plans
+WHERE provider_id = 1
+AND week_start BETWEEN '2024-09-23' AND '2024-09-28';
+```
+
+This request can be used to give the store administrator the ability to issue boxes in one click to extend the current weekly plan for the next week.
+
 [Back to top](#table-of-contents)
 
 ---
