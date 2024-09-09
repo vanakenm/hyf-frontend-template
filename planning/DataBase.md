@@ -76,6 +76,8 @@ mysql -u "root" -p < carefood.sql
 
 enter your password when asked
 
+#### If you created a database using a sql file, then you do not need to do the actions described below in this section. The information below describes filling in data using sql-queries
+
 2. Here are the SQL queries needed to create the database structure for the CareFood project.
 
 Create the database:
