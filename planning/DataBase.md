@@ -5,7 +5,7 @@
 1. [Entity Relationship Diagram](#entity-relationship-diagram)
 2. [Database Creation SQL](#database-creation-sql)
 3. [Data Insertion Example](#data-insertion-example)
-4. [Examples of SQL-queries](#)
+4. [Examples of SQL-queries](#examples-of-sql-queries)
 
 ---
 
