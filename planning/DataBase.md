@@ -164,6 +164,7 @@ CREATE TABLE reservations (
 
 ### Data Insertion Example
 
+#### If you created a database using a sql file, then you do not need to do the actions described below in this section. The information below describes filling in data using sql-queries
 
 Here are sample SQL queries for inserting data for three food providers, two user accounts, and weekly plans starting from September 9, 2024
 
