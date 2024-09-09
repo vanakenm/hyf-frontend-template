@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Col, Container, Image, Nav, Row } from "react-bootstrap";
+import './global.css';
 import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
                 type="text"
               ></input>
             </label>
-            <button onClick={handleLogin}>
+            <button onClick={handleLogin} >
               Login
             </button>
           </div>
