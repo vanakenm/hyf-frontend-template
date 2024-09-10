@@ -142,7 +142,7 @@ The database structure supports the management of both users and providers, ensu
     );
     ```
 
-5. **Weekly plans table:**:
+5. **Weekly plans table**:
 
     ```sql
     CREATE TABLE weekly_plans (
