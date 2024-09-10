@@ -111,6 +111,10 @@ Create providers table
 CREATE TABLE providers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
+    login VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    phone VARCHAR(20),
     address VARCHAR(255) NOT NULL,
     coordinates VARCHAR(100),
     description TEXT
@@ -173,11 +177,11 @@ Here are sample SQL queries for inserting data for three food providers, two use
 Insert providers:
 
 ```sql
-INSERT INTO providers (name, address, coordinates, description)
+INSERT INTO providers (name, login, password, email, phone, address, coordinates, description)
 VALUES 
-('Lidl', 'Rue Gray 138, 1050 Ixelles', '50.833, 4.366', 'Discount supermarket chain.'),
-('Lidl', 'Rue des Coteaux 40, 1030 Schaerbeek', '50.860, 4.383', 'Discount supermarket chain.'),
-('Aldi', 'Rue de Intendant 53, 1080 Molenbeek-Saint-Jean', '50.860, 4.320', 'Discount supermarket chain.');
+('Lidl138Gray', 'Lidl138Gray', 'pr123456', 'lidl138@example.com', '0123456789', 'Rue Gray 138, 1050 Ixelles', '50.8276, 4.3724', 'Discount supermarket chain.'),
+('Lidl40Cote', 'Lidl40Cote', 'pr123456', 'lidl40@example.com', '0123456789', 'Rue des Coteaux 40, 1030 Schaerbeek', '50.8647, 4.3769', 'Discount supermarket chain.'),
+('AldiWest', 'AldiWest', 'pr123456',  'aldiwest@example.com', '0123987654', 'Rue de Intendant 53, 1080 Molenbeek-Saint-Jean', '50.8595, 4.3307', 'Discount supermarket chain.');
 ```
 
 Insert box descriptions:
@@ -218,6 +222,7 @@ VALUES
 (1, '2024-09-12', 8, 3, 1, '17:30:00'),
 (1, '2024-09-13', 8, 3, 1, '17:30:00'),
 (1, '2024-09-14', 10, 4, 2, '17:30:00'),
+(1, '2024-09-15', 0, 0, 0, '17:30:00'),
 -- next week
 (1, '2024-09-16', 8, 3, 1, '17:30:00'),
 (1, '2024-09-17', 8, 3, 1, '17:30:00'),
@@ -225,6 +230,7 @@ VALUES
 (1, '2024-09-19', 8, 3, 1, '17:30:00'),
 (1, '2024-09-20', 8, 3, 1, '17:30:00'),
 (1, '2024-09-21', 10, 4, 2, '17:30:00'),
+(1, '2024-09-22', 0, 0, 0, '17:30:00'),
 -- next week
 (1, '2024-09-23', 8, 3, 1, '17:30:00'),
 (1, '2024-09-24', 8, 3, 1, '17:30:00'),
@@ -232,6 +238,7 @@ VALUES
 (1, '2024-09-26', 8, 3, 1, '17:30:00'),
 (1, '2024-09-27', 8, 3, 1, '17:30:00'),
 (1, '2024-09-28', 10, 4, 2, '17:30:00'),
+(1, '2024-09-29', 0, 0, 0, '17:30:00'),
 
 -- Lidl at Rue des Coteaux 40
 (2, '2024-09-09', 8, 3, 1, '17:30:00'),
@@ -240,6 +247,7 @@ VALUES
 (2, '2024-09-12', 8, 3, 1, '17:30:00'),
 (2, '2024-09-13', 8, 3, 1, '17:30:00'),
 (2, '2024-09-14', 10, 4, 2, '17:30:00'),
+(2, '2024-09-15', 0, 0, 0, '17:30:00'),
 -- next week
 (2, '2024-09-16', 8, 3, 1, '17:30:00'),
 (2, '2024-09-17', 8, 3, 1, '17:30:00'),
@@ -247,6 +255,7 @@ VALUES
 (2, '2024-09-19', 8, 3, 1, '17:30:00'),
 (2, '2024-09-20', 8, 3, 1, '17:30:00'),
 (2, '2024-09-21', 10, 4, 2, '17:30:00'),
+(2, '2024-09-22', 0, 0, 0, '17:30:00'),
 -- next week
 (2, '2024-09-23', 8, 3, 1, '17:30:00'),
 (2, '2024-09-24', 8, 3, 1, '17:30:00'),
@@ -254,6 +263,7 @@ VALUES
 (2, '2024-09-26', 8, 3, 1, '17:30:00'),
 (2, '2024-09-27', 8, 3, 1, '17:30:00'),
 (2, '2024-09-28', 10, 4, 2, '17:30:00'),
+(2, '2024-09-29', 0, 0, 0, '17:30:00'),
 
 -- Aldi at Rue de Intendant 53
 (3, '2024-09-09', 8, 3, 1, '17:30:00'),
@@ -262,6 +272,7 @@ VALUES
 (3, '2024-09-12', 8, 3, 1, '17:30:00'),
 (3, '2024-09-13', 8, 3, 1, '17:30:00'),
 (3, '2024-09-14', 10, 4, 2, '17:30:00'),
+(3, '2024-09-15', 0, 0, 0, '17:30:00'),
 -- next week
 (3, '2024-09-16', 8, 3, 1, '17:30:00'),
 (3, '2024-09-17', 8, 3, 1, '17:30:00'),
@@ -269,13 +280,15 @@ VALUES
 (3, '2024-09-19', 8, 3, 1, '17:30:00'),
 (3, '2024-09-20', 8, 3, 1, '17:30:00'),
 (3, '2024-09-21', 10, 4, 2, '17:30:00'),
+(3, '2024-09-22', 0, 0, 0, '17:30:00'),
 -- next week
 (3, '2024-09-23', 8, 3, 1, '17:30:00'),
 (3, '2024-09-24', 8, 3, 1, '17:30:00'),
 (3, '2024-09-25', 8, 3, 1, '17:30:00'),
 (3, '2024-09-26', 8, 3, 1, '17:30:00'),
 (3, '2024-09-27', 8, 3, 1, '17:30:00'),
-(3, '2024-09-28', 10, 4, 2, '17:30:00');
+(3, '2024-09-28', 10, 4, 2, '17:30:00'),
+(3, '2024-09-29', 0, 0, 0, '17:30:00');
 ```
 
 [Back to top](#table-of-contents)
@@ -389,7 +402,7 @@ result:
 +----+----------------+-----------+-----------+----------+----------------+
 | id | provider_name  | user_name | box_type  | quantity | reservation_date|
 +----+----------------+-----------+-----------+----------+----------------+
-|  1 | Lidl           | John Smith| Standard  |        1 | 2024-09-10      |
+|  1 |  Lidl138Gray   | John Smith| Standard  |        1 | 2024-09-10      |
 +----+----------------+-----------+-----------+----------+----------------+
 ```
 
@@ -410,7 +423,7 @@ result:
 +----+----------------+-----------+----------+----------------+
 | id | provider_name  | box_type  | quantity | reservation_date|
 +----+----------------+-----------+----------+----------------+
-|  1 | Lidl           | Standard  |        1 | 2024-09-10      |
+|  1 | Lidl138Gray    | Standard  |        1 | 2024-09-10      |
 +----+----------------+-----------+----------+----------------+
 ```
 
@@ -420,7 +433,7 @@ result:
 SELECT week_start, standard_quantity, vegan_quantity, diabetic_quantity, pickup_time
 FROM weekly_plans
 WHERE provider_id = 1
-AND week_start BETWEEN '2024-09-09' AND '2024-09-14';
+AND week_start BETWEEN '2024-09-09' AND '2024-09-15';
 ```
 
 result:
@@ -429,15 +442,16 @@ result:
 | week_start  | standard_quantity | vegan_quantity | diabetic_quantity | pickup_time |
 +-------------+-------------------+----------------+-------------------+-------------+
 | 2024-09-09  | 8                 | 3              | 1                 | 17:30:00    |
-| 2024-09-10  | 6                 | 3              | 1                 | 17:30:00    |
+| 2024-09-10  | 7                 | 3              | 1                 | 17:30:00    |
 | 2024-09-11  | 8                 | 3              | 1                 | 17:30:00    |
 | 2024-09-12  | 8                 | 3              | 1                 | 17:30:00    |
 | 2024-09-13  | 8                 | 3              | 1                 | 17:30:00    |
 | 2024-09-14  | 10                | 4              | 2                 | 17:30:00    |
+| 2024-09-15  | 0                 | 0              | 0                 | 17:30:00    |
 +-------------+-------------------+----------------+-------------------+-------------+
 ```
 
-8. Request to extend weekly plan for store 1 (September 23-28) for next week:
+8. Request to extend weekly plan for store 1 (September 23-29) for next week:
 
 
 ```sql
@@ -445,7 +459,7 @@ INSERT INTO weekly_plans (provider_id, week_start, standard_quantity, vegan_quan
 SELECT provider_id, DATE_ADD(week_start, INTERVAL 7 DAY), standard_quantity, vegan_quantity, diabetic_quantity, pickup_time
 FROM weekly_plans
 WHERE provider_id = 1
-AND week_start BETWEEN '2024-09-23' AND '2024-09-28';
+AND week_start BETWEEN '2024-09-23' AND '2024-09-29';
 ```
 
 This request can be used to give the store administrator the ability to issue boxes in one click to extend the current weekly plan for the next week.
