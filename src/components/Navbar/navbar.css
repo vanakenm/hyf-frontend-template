@@ -1,0 +1,14 @@
+.nav-buttons {
+  position: fixed;
+  right: 3.75rem;
+}
+
+.title {
+    position: relative;
+}
+
+.sub-title {
+    position: absolute;
+    left:50%;
+    top: 0;
+}
