@@ -2,8 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from "react-hook-form";
 import { Nav } from 'react-bootstrap';
-
-
+import './Login.css';
 
 const Login = ()=>{
 
@@ -16,7 +15,7 @@ const Login = ()=>{
   const onSubmit = (data) => console.log(data)
 
   return (
-  <Form onSubmit={handleSubmit(onSubmit)} className='p-4'>
+  <Form onSubmit={handleSubmit(onSubmit)} className="form-container">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control {...register("email", { required: true })}type="email" placeholder="Enter email" />
