@@ -1,17 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-<<<<<<< HEAD
 import { Nav } from "react-bootstrap";
-import "./login.css";
-=======
-import { Nav } from 'react-bootstrap';
-import './Login.css';
+import "./register.css";
 
-const Login = ()=>{
->>>>>>> main
-
-const Login = () => {
+const Register = () => {
   const {
     register,
     handleSubmit,
@@ -21,9 +14,8 @@ const Login = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-<<<<<<< HEAD
     <div className="container">
-      <Form onSubmit={handleSubmit(onSubmit)} className="p-4 login-style">
+      <Form onSubmit={handleSubmit(onSubmit)} className="p-4 register-style">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -31,17 +23,6 @@ const Login = () => {
             type="email"
             placeholder="Enter email"
           />
-=======
-  <Form onSubmit={handleSubmit(onSubmit)} className="form-container">
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control {...register("email", { required: true })}type="email" placeholder="Enter email" />
-        
-        {errors.email && errors.email.type === "required" && (
-        <span className='text-danger'> Email is required</span>
-      )}
-      </Form.Group>
->>>>>>> main
 
           {errors.email && errors.email.type === "required" && (
             <span className="text-danger"> Email is required</span>
@@ -60,19 +41,47 @@ const Login = () => {
           )}
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            {...register("name", { required: true })}
+            type="text"
+            placeholder="Name"
+          />
+          {errors.name && errors.name.type === "required" && (
+            <span className="text-danger"> Name is required</span>
+          )}
+        </Form.Group>
 
+        {/* <Form.Group>
+          <Form.Label>Choose Group Type</Form.Label>
+          <Form.Check
+            aria-label="Provider"
+            name="food"
+            type="radio"
+            label="Provider"
+          />
+          <Form.Check
+            aria-label="Collector"
+            name="food"
+            type="radio"
+            label="Collector"
+          />
+        </Form.Group> */}
+        <br></br>
+
+        <Button variant="primary" type="submit">
+          Register
+        </Button>
         <p>
           <br></br>
-          if you do not have an account{" "}
-          <Nav.Link href="/register" className="text-center">
-            Register
+          already have an account{" "}
+          <Nav.Link href="/login" className="text-center">
+            Login
           </Nav.Link>
         </p>
       </Form>
     </div>
   );
 };
-export default Login;
+export default Register;

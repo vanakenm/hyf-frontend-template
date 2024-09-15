@@ -6,27 +6,21 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RecipesPage from "./RecipesPage.jsx";
 import Navigation from "./components/Navbar/NavBar.jsx";
 import Login from "./components/Login/Login.jsx";
-import Register from "./components/Registeration/Register.jsx";
-
-// Create a common component that will render Navigation and routes
-const Layout = () => (
-  <>
-    <Navigation />
-    <Outlet /> {/* This is where the pages will be rendered */}
-  </>
-);
+import Register from "./components/Registration/Register.jsx";
+import Reservations from "./pages/Reservations.jsx";
+import ReservationDetails from "./pages/ReservationDetails.jsx";
+import Offers from "./pages/Offers.jsx";
+import OfferDetails from "./pages/OfferDetails.jsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />, // Include navigation and content
-    children: [
-      { path: "/", element: <App /> }, // Home page
-      { path: "/recipes", element: <RecipesPage /> }, // Recipes page
-      { path: "/login", element: <Login /> }, // Login page
-      { path: "/register", element: <Register /> }, // Registration page
-    ],
-  },
+  { path: "/", element: <App />, errorElement: <Error /> },
+  { path: "/recipes", element: <RecipesPage /> },
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/reservations", element: <Reservations /> },
+  { path: "/reservations/:id", element: <ReservationDetails /> },
+  { path: "/offers", element: <Offers /> },
+  { path: "/offers/:id", element: <OfferDetails /> },
 ]);
 
 createRoot(document.getElementById("root")).render(
