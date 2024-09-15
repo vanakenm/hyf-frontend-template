@@ -2,10 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from "react-hook-form";
 import { Nav } from 'react-bootstrap';
-import "./login.css"
+import "./register.css"
 
 
-const Login = ()=>{
+
+const Register = ()=>{
 
   const {
     register,
@@ -17,7 +18,7 @@ const Login = ()=>{
 
   return (
   <div className="container">
-    <Form onSubmit={handleSubmit(onSubmit)} className='p-4 login-style'>
+    <Form onSubmit={handleSubmit(onSubmit)} className='p-4 register-style'>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control {...register("email", { required: true })}type="email" placeholder="Enter email" />
@@ -33,15 +34,23 @@ const Login = ()=>{
           <span className="text-danger"> Password is required</span>
         )}
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Name</Form.Label>
+          <Form.Control {...register("name", { required: true })} type="text" placeholder="Name" />
+          {errors.name && errors.name.type === "required" && (
+          <span className="text-danger"> Name is required</span>
+        )}
+        </Form.Group>
+        
     
         <Button variant="primary" type="submit">
-         Login
+        Register
         </Button>
-        <p>if you do not have an account <Nav.Link href="/register" className="text-center">
-             Register
+        <p>already have an account <Nav.Link href="/login" className="text-center">
+              Login
             </Nav.Link></p>
       </Form>
   </div>
     )
 }
-export default Login
+export default Register

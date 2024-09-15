@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RecipesPage from "./RecipesPage.jsx";
 import Navigation from "./components/Navbar/NavBar.jsx";
 import Login from "./components/Login/Login.jsx";
-import Register from "./components/Registeration/Register.jsx";
+import Register from "./components/Registration/Register.jsx";
 
 
 const router = createBrowserRouter([
