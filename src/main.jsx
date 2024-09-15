@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RecipesPage from "./RecipesPage.jsx";
 import Navigation from "./components/Navbar/NavBar.jsx";
 import Login from "./components/Login/Login.jsx";
-import Register from "./components/Registeration/Register.jsx";
+import Register from "./components/Registration/Register.jsx";
 import Reservations from "./pages/Reservations.jsx";
 import ReservationDetails from "./pages/ReservationDetails.jsx";
 import Offers from "./pages/Offers.jsx";

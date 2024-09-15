@@ -53,7 +53,7 @@ const Register = () => {
           )}
         </Form.Group>
 
-        <Form.Group>
+        {/* <Form.Group>
           <Form.Label>Choose Group Type</Form.Label>
           <Form.Check
             aria-label="Provider"
@@ -67,7 +67,7 @@ const Register = () => {
             type="radio"
             label="Collector"
           />
-        </Form.Group>
+        </Form.Group> */}
         <br></br>
 
         <Button variant="primary" type="submit">
