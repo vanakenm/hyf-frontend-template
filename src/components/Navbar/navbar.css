@@ -1,0 +1,57 @@
+.navbar {
+    background-color: #4e99e4; /* Light background color */
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #d9534f; /* Red color for the brand (brand-red) */
+  }
+  
+  .navbar .navbar-brand:hover {
+    color: #c9302c; /* Darker red on hover */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #343a40; /* Dark grey color for nav links */
+    margin-left: 15px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff; /* Blue color on hover */
+  }
+  
+  .navbar-toggler {
+    border-color: #007bff; /* Blue toggle button border */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #007bff; /* Blue color for the navbar toggle icon */
+  }
+  
+  .navbar-collapse {
+    justify-content: flex-end; /* Align navigation links to the right on larger screens */
+  }
+  
+  /* Active Link Styling */
+  .navbar-nav .nav-link.active {
+    color: #007bff; /* Blue color for active link */
+    font-weight: bold;
+  }
+  
+  /* Responsive Styling for Mobile */
+  @media (max-width: 992px) {
+    .navbar-nav {
+      text-align: center; /* Center links on mobile */
+    }
+  
+    .navbar-nav .nav-link {
+      margin-left: 0;
+      margin-bottom: 10px; /* Add space between links on mobile */
+    }
+  }
+  
