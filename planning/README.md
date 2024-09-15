@@ -78,17 +78,13 @@ The database structure supports the management of both users and providers, ensu
     Table structure:
 
     ```sql
-    CREATE TABLE Users (
-    user_id INT PRIMARY KEY,
-    user_type ENUM('seeker', 'provider'),
-    name VARCHAR(100),
+    CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
     email VARCHAR(100),
-    password_hash VARCHAR(255),
-    preferences JSON, -- {"Standard": true, "Vegan": false, "Diabetic": true}
-    address VARCHAR(255), -- For providers
-    description TEXT, -- For providers
-    coordinates POINT, -- For providers, optional
-    reservation_history JSON -- List of reservations for seekers
+    phone VARCHAR(20),
+    password VARCHAR(100) NOT NULL,
+    preferences VARCHAR(20)
     );
     ```
 
@@ -100,13 +96,16 @@ The database structure supports the management of both users and providers, ensu
    Table structure:
 
    ```sql
-   CREATE TABLE Stores (
-    store_id INT PRIMARY KEY,
-    store_name VARCHAR(100),
-    address VARCHAR(255),
-    description TEXT,
-    coordinates POINT,
-    weekly_box_plan JSON -- {"Monday": {"Standard": 10, "Vegan": 5, "Diabetic": 2}, ...}
+    CREATE TABLE providers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    login VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    phone VARCHAR(20),
+    address VARCHAR(255) NOT NULL,
+    coordinates VARCHAR(100),
+    description TEXT
     );
     ```
 
@@ -118,14 +117,12 @@ The database structure supports the management of both users and providers, ensu
     Table structure:
 
     ```sql
-   CREATE TABLE Food_Boxes (
-    box_id INT PRIMARY KEY,
-    store_id INT,
-    box_type ENUM('Standard', 'Vegan', 'Diabetic'),
-    available_count INT,
-    reserved_count INT,
-    date DATE,
-    FOREIGN KEY (store_id) REFERENCES Stores(store_id)
+    CREATE TABLE boxes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_id INT,
+    type VARCHAR(20),
+    description TEXT,
+    FOREIGN KEY (provider_id) REFERENCES providers(id)
     );
     ```
 
@@ -136,16 +133,32 @@ The database structure supports the management of both users and providers, ensu
     Table structure:
 
     ```sql
-    CREATE TABLE Reservations (
-    reservation_id INT PRIMARY KEY,
+    CREATE TABLE reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     box_id INT,
+    provider_id INT,
     reservation_date DATE,
-    reservation_status ENUM('reserved', 'issued', 'cancelled'),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (box_id) REFERENCES Food_Boxes(box_id)
+    quantity INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (box_id) REFERENCES boxes(id),
+    FOREIGN KEY (provider_id) REFERENCES providers(id)
     );
     ```
+
+5. **Weekly plans table**:
+
+    ```sql
+    CREATE TABLE weekly_plans (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_id INT,
+    week_start DATE,
+    standard_quantity INT,
+    vegan_quantity INT,
+    diabetic_quantity INT,
+    pickup_time TIME,
+    FOREIGN KEY (provider_id) REFERENCES providers(id)
+    );
 
 [Back to top](#table-of-contents)
 
