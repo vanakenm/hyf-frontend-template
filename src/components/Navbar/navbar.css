@@ -9,6 +9,15 @@
 
 .sub-title {
     position: absolute;
-    left:50%;
+    left: 50%;
     top: 0;
+    transform: translateX(-50%);
+    color: var( --grey-800);
+}
+
+.queries-btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
