@@ -1,0 +1,122 @@
+.heading {
+    font-size: large;
+    font-weight: 600;
+    margin-inline-start: 2.1rem;
+    margin-bottom: 1.6rem;
+    margin-top: 1.6rem;
+}
+
+/* Reservations & Reservation Details */
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: .5rem;
+}
+
+.count {
+    font-size: large;
+    margin-bottom: .4rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: small;
+}
+
+.list {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+h4 {
+    font-size: medium;
+    background-color: gainsboro;
+    padding: 0.5rem;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+.icon {
+    width: 10px;
+    height: auto;
+}
+
+.back-icon {
+    width: 16px;
+    margin-inline-start: 1rem;
+    cursor: pointer;
+}
+
+.date {
+    margin-bottom: 1.5rem;
+}
+
+.date,
+.description,
+.food-lover {
+    margin-inline-start: 2.1rem;
+}
+
+.food-lover {
+    margin-top: 1rem;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-inline-start: 2.1rem;
+    margin-inline-end: 2.1rem;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.status {
+    padding: 1rem 3rem;
+    margin-top: 2.5rem;
+    border-radius: 8px;
+    border: none;
+    background-color: dodgerblue;
+    color: #fff;
+    font-weight: 500;
+    transform: translateX(40%);
+    cursor: pointer;
+}
+
+/* Offers */
+
+.title-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-wrapper p {
+    margin-inline-end: 2.1rem;
+    margin-top: 1.6rem;
+    color: dodgerblue;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: gainsboro;
+    padding: .7rem;
+}
+
+.footer p {
+    font-size: small;
+    margin-top: .2rem;
+}
