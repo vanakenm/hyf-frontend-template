@@ -12,7 +12,7 @@
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    color: var( --grey-800);
+    color: var( --grey-900);
 }
 
 .queries-btn {
