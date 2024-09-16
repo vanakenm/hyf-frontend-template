@@ -1,0 +1,32 @@
+[33md8c5157[m[33m ([m[1;36mHEAD -> [m[1;32mhome[m[33m)[m HEAD@{0}: pull origin main: Merge made by the 'ort' strategy.
+[33m6c2b9e2[m HEAD@{1}: checkout: moving from main to home
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{2}: checkout: moving from fix to main
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{3}: checkout: moving from main to fix
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{4}: checkout: moving from home to main
+[33m6c2b9e2[m HEAD@{5}: checkout: moving from main to home
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{6}: reset: moving to HEAD
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{7}: checkout: moving from fix to main
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{8}: checkout: moving from main to fix
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{9}: checkout: moving from fix to main
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{10}: checkout: moving from main to fix
+[33m20ee0b4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mfix[m[33m)[m HEAD@{11}: pull: Fast-forward
+[33m53e9c76[m HEAD@{12}: checkout: moving from home to main
+[33m6c2b9e2[m HEAD@{13}: commit: fix btn css
+[33md807f80[m HEAD@{14}: commit: add query logic
+[33mf988a46[m HEAD@{15}: checkout: moving from main to home
+[33m53e9c76[m HEAD@{16}: pull: Fast-forward
+[33m58663c4[m HEAD@{17}: pull: Fast-forward
+[33m8073b77[m HEAD@{18}: checkout: moving from home to main
+[33mf988a46[m HEAD@{19}: commit: fix navbar
+[33m8073b77[m HEAD@{20}: checkout: moving from main to home
+[33m8073b77[m HEAD@{21}: pull: Fast-forward
+[33md69ff1d[m HEAD@{22}: pull: Fast-forward
+[33m30f05b2[m HEAD@{23}: checkout: moving from homePage to main
+[33m0b1843e[m[33m ([m[1;32mhomePage[m[33m)[m HEAD@{24}: reset: moving to HEAD
+[33m0b1843e[m[33m ([m[1;32mhomePage[m[33m)[m HEAD@{25}: commit: logic home page
+[33m30f05b2[m HEAD@{26}: checkout: moving from main to homePage
+[33m30f05b2[m HEAD@{27}: pull origin main: Fast-forward
+[33m3f2fda7[m HEAD@{28}: checkout: moving from globalcss to main
+[33m3d68c3f[m[33m ([m[1;32mglobalcss[m[33m)[m HEAD@{29}: commit: add global css
+[33m3f2fda7[m HEAD@{30}: checkout: moving from main to globalcss
+[33m3f2fda7[m HEAD@{31}: clone: from https://github.com/juryp/hyf-CareFood-frontend.git
