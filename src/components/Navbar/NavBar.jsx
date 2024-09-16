@@ -1,11 +1,10 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { useLocation } from "react-router-dom"; // Импортируем useLocation
+import { useLocation } from "react-router-dom"; 
 import './navbar.css'
 
 export default function Navigation() {
-  const location = useLocation(); // Получаем текущий маршрут
+  const location = useLocation(); 
 
-  // Проверяем, если это домашняя страница
   const isHomePage = location.pathname === "/";
 
   return (
@@ -24,7 +23,6 @@ export default function Navigation() {
               Food Items
             </Nav.Link>
 
-            {/* Отображаем кнопки только на домашней странице */}
             {isHomePage && (
               <div className="nav-buttons">
                 <Nav.Link
