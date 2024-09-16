@@ -22,15 +22,16 @@ const Login = () => {
           type="email"
           placeholder="Enter email"
         />
+
         {errors.email && errors.email.type === "required" && (
           <span className="text-danger"> Email is required</span>
         )}
       </Form.Group>
-      <Form.Group>
-        {errors.email && errors.email.type === "required" && (
-          <span className="text-danger"> Email is required</span>
-        )}
-      </Form.Group>
+
+      {errors.email && errors.email.type === "required" && (
+        <span className="text-danger"> Email is required</span>
+      )}
+
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
@@ -42,9 +43,11 @@ const Login = () => {
           <span className="text-danger"> Password is required</span>
         )}
       </Form.Group>
+
       <Button variant="primary" type="submit">
         Login
       </Button>
+
       <p>
         <br></br>
         if you do not have an account{" "}
