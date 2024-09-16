@@ -3,11 +3,9 @@ import { Col, Container, Image, Row } from "react-bootstrap";
 import "./global.css";
 import reservationApi from "./api/reservations";
 import offersApi from "./api/offers";
-import { useNavigate } from "react-router-dom";
 
 function App() {
   const [offers, setOffers] = useState([]);
-  const navigate = useNavigate();
   const params = {
     startDate: "2024-09-14",
     endDate: "2024-09-14",
@@ -57,7 +55,6 @@ function App() {
       <div className="title">
         <Image className="title-image"
           src="https://img.freepik.com/free-photo/close-up-volunteers-collecting-food_23-2149182026.jpg?size=626&ext=jpg&ga=GA1.1.1518270500.1717545600&semt=ais_user"
-          className="mx-auto d-block"
         />
         <div className="sub-title">
           <h2>Rescue Food, Fight Waste</h2>
