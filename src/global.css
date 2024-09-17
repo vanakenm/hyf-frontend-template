@@ -149,6 +149,7 @@ ul {
 .btn:hover {
   background: var(--primary-700);
   box-shadow: var(--shadow-3);
+  color: var(--white);
 }
 .btn-hipster {
   color: var(--primary-500);
