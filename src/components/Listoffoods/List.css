@@ -1,0 +1,47 @@
+.offer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 16px; 
+}
+
+.offer-item {
+  margin: 8px;
+  padding: 6px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-width: 250px; 
+  flex: 1 1 200px; 
+}
+
+.offer-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.offer-info {
+  margin-bottom: 6px;
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.offer-label {
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.offer-value {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.offer-info span {
+  display: inline-block;
+  margin-right: 5px;
+}
