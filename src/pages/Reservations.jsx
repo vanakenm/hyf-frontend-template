@@ -86,9 +86,9 @@ const Reservations = () => {
   }, [reservations]);
 
   return (
-    <div>
-      <h2 className="heading"> Reservations </h2>
-      <div className="container">
+    <div className="content">
+      <h2 className="heading"> Reservations - Food Provider </h2>
+      <div className="count-container">
         <div>
           <p className="count"> {reservedCount} </p>
           <h3> reserved </h3>
@@ -120,10 +120,7 @@ const Reservations = () => {
                   <strong> {reservation.id} </strong>{" "}
                 </div>
                 <div>
-                  <div>
-                    {" "}
-                    <strong> {reservation.offerName} </strong>{" "}
-                  </div>
+                  <div> {reservation.offerName} </div>
                   <div>
                     {" "}
                     {reservation.time} - {reservation.status}{" "}

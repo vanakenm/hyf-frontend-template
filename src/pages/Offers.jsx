@@ -7,7 +7,7 @@ const Offers = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="content">
       <div className="title-wrapper">
         <h2 className="heading"> Offers </h2>
         <p> New Offer </p>
