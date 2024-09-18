@@ -1,0 +1,57 @@
+/* OffersListFunction.css */
+
+.offers-list {
+width: 1080px;
+  margin:40px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.offers-list h1 {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.offers-list h3 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.offer-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.offer-item:hover {
+  background-color: #f0f0f0;
+}
+
+.offer-item-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.offer-item-units {
+  font-size: 14px;
+  color: #777;
+}
+
+.offer-item-arrow {
+  font-size: 20px;
+  color: #007bff;
+}
+
+.offer-item-arrow:hover {
+  color: #0056b3;
+}
