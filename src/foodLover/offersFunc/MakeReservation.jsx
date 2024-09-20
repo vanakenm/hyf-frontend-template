@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './makeReservation.css';
 import { updateRequest, getRequest } from '../dataFoodLover';  // Import both updateRequest and getRequest
@@ -8,6 +8,14 @@ const MakeReservation = () => {
   const [quantity, setQuantity] = useState(1);
   const [pickupTime, setPickupTime] = useState('12:00');
   const navigate = useNavigate();
+
+  // Refresh the page only once when the component is first loaded
+  useEffect(() => {
+    if (!sessionStorage.getItem('reloaded')) {
+      window.location.reload();
+      sessionStorage.setItem('reloaded', 'true');  // Set a flag to prevent infinite reload
+    }
+  }, []);
 
   const handleReserveClick = () => {
     // Create a new reservation object
@@ -21,8 +29,6 @@ const MakeReservation = () => {
     // Update the request array in dataFoodLover.js
     updateRequest(newReservation);  // Call the function to update the request array
     
-
-
     // Navigate to the reservation list (or any other page)
     navigate('/reservation-list');
   };
@@ -37,19 +43,18 @@ const MakeReservation = () => {
       <h4>{reservedata.unit} units left</h4>
 
       <div>
-<label>Quantity</label>
-<select
-  value={quantity}
-  onChange={(e) => setQuantity(e.target.value)}
->
-  <option value="" disabled>Select Quantity</option>
-  {Array.from({ length: reservedata.unit }, (_, i) => i + 1).map((num) => (
-    <option key={num} value={num}>
-      {num}
-    </option>
-  ))}
-</select>
-
+        <label>Quantity</label>
+        <select
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+        >
+          <option value="" disabled>Select Quantity</option>
+          {Array.from({ length: reservedata.unit }, (_, i) => i + 1).map((num) => (
+            <option key={num} value={num}>
+              {num}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
