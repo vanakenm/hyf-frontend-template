@@ -66,7 +66,7 @@ const styles = {
   activeButton: {
     padding: '10px 20px',
     cursor: 'pointer',
-    backgroundColor: '#007bff',
+    backgroundColor: '#fcd34d',
     color: '#fff',
     border: '1px solid #007bff',
     borderRadius: '5px',

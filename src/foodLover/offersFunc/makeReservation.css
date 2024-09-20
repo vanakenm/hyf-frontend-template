@@ -1,5 +1,5 @@
 .make-reservation {
-  max-width: 600px;
+  max-width: 1600px;
   margin: 100px; 
   padding: 20px;
   border: 1px solid #ddd;
@@ -55,12 +55,13 @@
 }
 
 .make-reservation button {
-  width: 100%;
+  width: 20%;
   padding: 12px;
+  margin-left: 30%;
   font-size: 16px;
   border: none;
   border-radius: 4px;
-  background-color: #522ec7;
+  background-color: #fcd34d;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;

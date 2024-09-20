@@ -1,12 +1,11 @@
 // dataFoodLover.js
 
-
 const offers = [
   {
     name: "John Doe",
     date: "2024-09-10",
     restaurant: "Burger Haven",
-    unit: 10,
+    unit: 13,
     description: "Get two delicious burger combo meals with fries and a drink for a special price."
   },
   {
@@ -39,7 +38,7 @@ const offers = [
   }
 ];
 
-// reserved array
+// Reserved array
 const reserved = [
   {
     name: "Felix Brown",
@@ -75,24 +74,35 @@ const reserved = [
   },
 ];
 
-
-
-// total offers and their total offered quantity and the total remaining quantity
+// Total offers and their total offered quantity and the total remaining quantity
 const offerstotal = {
-  offersNum: 3,          // Number of offers available
-  offersUnit: 25,         // Total quantity of items across all offers
-  offersUnitRest: 5,     // Quantity of items reserved or remaining in stock
+  offersNum: 5,
+  offersUnit: 30,
+  offersUnitRest: 8,
 };
 
+// Request array (initially includes a single request)
 let request = [
-  { 
-    name: "Olivia Taylor", 
-    description: "Sushi Platter", 
-    pickuptime: "2024-09-23 12:00", 
-    unit: 4 
+  {
+    name: "Olivia Taylor",
+    description: "Sushi Platter",
+    pickuptime: "2024-09-23 12:00",
+    unit: 4,
   },
 ];
 
+// Function to update the request array dynamically
+const updateRequest = (newReservation) => {
+  request.push(newReservation);  // Add the new reservation to the request array
+  console.log("Request updated is :", request[1]);  // Log for debugging
+};
 
-// Export the data
-export { offers, reserved, offerstotal };
+// Function to get the current request array
+const getRequest = () => {
+  return request;
+};
+
+
+
+// Export all data and functions
+export { offers, reserved, offerstotal, getRequest, updateRequest };
