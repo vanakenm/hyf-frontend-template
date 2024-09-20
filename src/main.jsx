@@ -23,12 +23,10 @@ import Layout from "./Layout.jsx";
 import ReservationDetailPage from "./foodLover/reservationpart/ReservationDetailListPage.jsx";
 import ReservedDetailPage from "./foodLover/HomeLOver/ReservedDetailPage.jsx";
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>, // Include navigation and content
+    element: <Layout />, // Include navigation and content
     children: [
       { path: "/", element: <App /> }, // Home page
       { path: "/recipes", element: <RecipesPage /> }, // Recipes page
@@ -38,16 +36,16 @@ const router = createBrowserRouter([
       { path: "/reservations/:id", element: <ReservationDetails /> }, // Food provider reservation details page
       { path: "/offers", element: <Offers /> }, // Food provider offers page
       { path: "/offers/:id", element: <OfferDetails /> }, // Food provider offer details page
-      {path: "/reservation-list",element:<ReservationListPage />},
-      {path: "/reserved-detail", element: <ReservedDetailPage/>},
-      {path: "/reservation-detail", element: <ReservationDetailPage/>},
-      {path:"/offerslover" , element:<OffersListFunction />},
-      {path:"/offers-detail",element:<OffersDetailListFunction />},
-      {path: "/make-reservation", element:<MakeReservation />},
-      {path: "/offersTotal", element:<OfferTotal />},
-      {path: "/foodLoverNav", element:<FooterNav/>} ,
-      {path: "/homePageLover",element: <HomePageLover />}, // Combined layout page
-      {path: "/foodLoverNav", element:<ReservedList/>}  
+      { path: "/reservation-list", element: <ReservationListPage /> },
+      { path: "/reserved-detail", element: <ReservedDetailPage /> },
+      { path: "/reservation-detail", element: <ReservationDetailPage /> },
+      { path: "/offerslover", element: <OffersListFunction /> },
+      { path: "/offers-detail", element: <OffersDetailListFunction /> },
+      { path: "/make-reservation", element: <MakeReservation /> },
+      { path: "/offersTotal", element: <OfferTotal /> },
+      { path: "/foodLoverNav", element: <FooterNav /> },
+      { path: "/homePageLover", element: <HomePageLover /> }, // Combined layout page
+      { path: "/foodLoverNav", element: <ReservedList /> },
     ],
   },
 ]);
