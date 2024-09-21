@@ -1,22 +1,36 @@
-// MakeReservation.jsx
-
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import './makeReservation.css'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import './makeReservation.css';
+import { updateRequest, getRequest } from '../dataFoodLover';  // Import both updateRequest and getRequest
 
 const MakeReservation = () => {
   const { state: reservedata } = useLocation();  // Get the offer data passed from OffersDetailListFunction.jsx
   const [quantity, setQuantity] = useState(1);
   const [pickupTime, setPickupTime] = useState('12:00');
-
-
-
- 
   const navigate = useNavigate();
 
+  // Refresh the page only once when the component is first loaded
+  useEffect(() => {
+    if (!sessionStorage.getItem('reloaded')) {
+      window.location.reload();
+      sessionStorage.setItem('reloaded', 'true');  // Set a flag to prevent infinite reload
+    }
+  }, []);
+
   const handleReserveClick = () => {
-    navigate('/reservation-list');  // Pass the offer to MakeReservation.jsx
+    // Create a new reservation object
+    const newReservation = {
+      name: reservedata.name,
+      description: reservedata.description,
+      pickuptime: pickupTime,
+      unit: quantity,
+    };
+
+    // Update the request array in dataFoodLover.js
+    updateRequest(newReservation);  // Call the function to update the request array
+    
+    // Navigate to the reservation list (or any other page)
+    navigate('/reservation-list');
   };
 
   return (
@@ -30,25 +44,29 @@ const MakeReservation = () => {
 
       <div>
         <label>Quantity</label>
-        <input
-          type="number"
-          min="1"
-          max={reservedata.unit}
+        <select
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
-        />
+        >
+          <option value="" disabled>Select Quantity</option>
+          {Array.from({ length: reservedata.unit }, (_, i) => i + 1).map((num) => (
+            <option key={num} value={num}>
+              {num}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
         <label>Pickup time</label>
         <select value={pickupTime} onChange={(e) => setPickupTime(e.target.value)}>
-          <option value="12:00">12:00</option>
-          <option value="13:00">13:00</option>
-          <option value="14:00">14:00</option>
+          <option value="12:00">10:00</option>
+          <option value="13:00">12:00</option>
+          <option value="14:00">18:00</option>
         </select>
       </div>
 
-      <button  onClick={handleReserveClick}>Confirm Reservation</button>
+      <button onClick={handleReserveClick}>Confirm Reservation</button>
     </div>
   );
 };
