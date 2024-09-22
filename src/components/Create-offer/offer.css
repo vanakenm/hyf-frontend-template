@@ -1,0 +1,63 @@
+/* styles.css */
+
+/* Container styling */
+.container {
+    margin-top: 40px;
+  }
+  
+  /* Heading style */
+  h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Feedback styling */
+  .invalid-feedback {
+    color: #e74c3c;
+  }
+  
+  /* Button styling */
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+  }
+  
+  /* Success message */
+  .alert-success {
+    margin-top: 10px;
+    text-align: center;
+  }
+  

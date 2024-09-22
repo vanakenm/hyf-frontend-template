@@ -11,6 +11,7 @@ import Reservations from "./pages/Reservations.jsx";
 import ReservationDetails from "./pages/ReservationDetails.jsx";
 import Offers from "./pages/Offers.jsx";
 import OfferDetails from "./pages/OfferDetails.jsx";
+import Offer from "./components/Create-offer/Offer.jsx";
 
 // Create a common component that will render Navigation and routes
 const Layout = () => (
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: "/reservations/:id", element: <ReservationDetails /> }, // Food provider reservation details page
       { path: "/offers", element: <Offers /> }, // Food provider offers page
       { path: "/offers/:id", element: <OfferDetails /> }, // Food provider offer details page
+      { path: "/Offer", element : <Offer /> }, // Food provider create offers page
     ],
   },
 ]);
