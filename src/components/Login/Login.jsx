@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { Nav } from "react-bootstrap";
-import "./login.css";
+import "./Login.css";
 
 const Login = () => {
   const {
@@ -18,7 +18,7 @@ const Login = () => {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
-          {...register("email", { required: true })}
+          {...register("email",{ required: true })}
           type="email"
           placeholder="Enter email"
         />
@@ -42,6 +42,19 @@ const Login = () => {
           <span className="text-danger"> Password is required</span>
         )}
       </Form.Group>
+      <Form.Group controlId="userType">
+        <Form.Label>Login as</Form.Label>
+        <Form.Control as="select" {...register("userType", { required: true })} >
+          <option value="Food provider"> Food provider</option>
+          <option value="Food lover">Food lover</option>
+          </Form.Control>
+        {errors.userType && errors.userType.type === "required" && (
+        <span className="text-danger"> user type is required</span>
+      )}
+      </Form.Group>
+
+
+
       <Button variant="primary" type="submit">
         Login
       </Button>

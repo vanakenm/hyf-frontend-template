@@ -4,9 +4,13 @@ import "./global.css";
 import reservationApi from "./api/reservations";
 import offersApi from "./api/offers";
 import ListOfFoods from "./components/Listoffoods/ListOfFoods";
+import loginApi from "./api/login";
+import boxesApi from "./api/boxes";
 
 function App() {
   const [offers, setOffers] = useState([]);
+    const [result, setResult] = useState(null);
+
   const params = {
     startDate: "2024-09-14",
     endDate: "2024-09-14",
@@ -17,9 +21,10 @@ function App() {
   }, []);
   const getReservations = async () => {
     try {
-      const res = await reservationApi.get(1, params);
+      const res = await reservationApi.get(3, params);
       const data = await res.json();
-      console.log(data);
+            setResult(data);
+
     } catch (error) {
       console.log(error);
     }
@@ -27,26 +32,40 @@ function App() {
 
   const getReservationsByUser = async () => {
     try {
-      const res = await reservationApi.getUser(2, params);
+      const res = await reservationApi.getUser(1, params);
       const data = await res.json();
-      console.log(data);
+      setResult(data);
     } catch (error) {
       console.log(error);
     }
   };
- 
+
   const postReservations = async () => {
     const data = {
       user_id: 5,
       provider_id: 1,
       box_id: 1,
-      reservation_date: "2024-09-14",
+      date: "2024-09-14",
       quantity: 2,
     };
     try {
       const res = await reservationApi.post(data);
       const reserve = await res.json();
-      console.log(reserve);
+      setResult(reserve);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const changeStatus = async () => {
+    const data = {
+      provider_id: 3,
+      date: "2024-09-14",
+    };
+    try {
+      const res = await reservationApi.post(data);
+      const reserve = await res.json();
+      setResult(reserve);
     } catch (error) {
       console.log(error);
     }
@@ -62,6 +81,37 @@ function App() {
     }
   };
   console.log(offers);
+
+  const loginUser = async () => {
+    const data = {
+      login: "imask@example.com",
+      password: "password123",
+    };
+    try {
+      const res = await loginApi.post(data);
+      const reserve = await res.json();
+      setResult(reserve);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addBoxes = async () => {
+    const data = {
+      provider_id: 3,
+      week_start: "2024-10-01",
+      type: 1,
+      quantity: 5,
+      pickup_time: "17:30:00",
+    };
+    try {
+      const res = await boxesApi.put(data);
+      const reserve = await res.json();
+      setResult(reserve);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
@@ -88,8 +138,15 @@ function App() {
             <button onClick={() => postReservations()} className="btn">
               postReservations
             </button>
-            <button onClick={() => getOffers()} className="btn">
-              Get Offers
+           
+            <button onClick={() => loginUser()} className="btn">
+              login User
+            </button>
+            <button onClick={() => addBoxes()} className="btn">
+              add  some boxes
+            </button>
+            <button onClick={() => changeStatus()} className="btn">
+              change status
             </button>
           </div>
 
@@ -98,7 +155,14 @@ function App() {
             <div className="text-center"></div>
           </Col>
         </Row>
+
         <ListOfFoods offers={offers} />
+        {result && (
+          <div className="result-section my-4">
+            <h4>result:</h4>
+            <pre>{JSON.stringify(result, null, 2)}</pre>
+          </div>
+        )}
       </section>
     </Container>
   );

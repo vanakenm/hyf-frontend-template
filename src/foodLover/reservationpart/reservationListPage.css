@@ -1,0 +1,24 @@
+.reservation-list {
+    padding: 20px;
+  }
+  
+  .reservation-item {
+    cursor: pointer;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .reservation-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
