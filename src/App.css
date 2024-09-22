@@ -116,6 +116,13 @@ h4 {
     margin-inline-end: 2.1rem;
     margin-top: 1.6rem;
     color: dodgerblue;
+    cursor: pointer;
+}
+
+.quantity-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .footer {
@@ -132,6 +139,7 @@ h4 {
 .footer div {
     flex: 1;
     text-align: center;
+    cursor: pointer;
 }
 
 .footer p {

@@ -6,59 +6,39 @@ import forward_icon from "../assets/forward.png";
 import reservation_icon from "../assets/reservation_icon.png";
 import offers_icon from "../assets/offers_icon.png";
 import logout_icon from "../assets/logout_icon.png";
+import api from "../api/reservations";
 
 const Reservations = () => {
-  const dummyReservations = [
-    {
-      id: 1,
-      description:
-        "Savour the perfect balance of crispy, golden-brown skin and tender, succulent meat in our homemade fried chicken. Every bite is a delicious adventure.",
-      date: "Sept 16 2024",
-      time: "12:15",
-      offerName: "Fried chicken",
-      units: 10,
-      status: "Reserved",
-      foodLover: "Mark Adams",
-    },
-    {
-      id: 2,
-      description:
-        "Our pasta is made daily with the freshest ingredients, ensuring a delicious and satisfying meal. Choose from a variety of classic and innovative dishes.",
-      date: "Sept 16 2024",
-      time: "14:30",
-      offerName: "Pasta",
-      units: 5,
-      status: "Ready for pickup",
-      foodLover: "Jane Anderson",
-    },
-    {
-      id: 3,
-      description:
-        "Our rice is carefully selected and prepared to ensure a tender and flavorful accompaniment to any meal.",
-      date: "Sept 15 2024",
-      time: "13:00",
-      offerName: "Rice",
-      units: 7,
-      status: "Delivered",
-      foodLover: "Tony Miguel",
-    },
-  ];
-
-  const [reservations, setReservations] = useState(dummyReservations);
+  const [reservations, setReservations] = useState([]);
+  const params = {
+    startDate: "2024-09-14",
+    endDate: "2024-09-14",
+  };
 
   const navigate = useNavigate();
 
   // Counters for the different status
-  const [reservedCount, setReservedCount] = useState(0);
+  const [activeCount, setActiveCount] = useState(0);
   const [readyCount, setReadyCount] = useState(0);
-  const [deliveredCount, setDeliveredCount] = useState(0);
+  const [issuedCount, setIssuedCount] = useState(0);
 
-  const groupedData = dummyReservations.reduce((groups, reservations) => {
-    const date = reservations.date;
+  const handleReservations = async () => {
+    try {
+      const response = await api.get(1, params);
+      const data = await response.json();
+      console.log(data);
+      setReservations(data);
+    } catch (error) {
+      return `${error.message} -  There is an error fetching reservations made.`;
+    }
+  };
+
+  const groupedData = reservations.reduce((groups, reservation) => {
+    const date = reservation.reservation_date;
     if (!groups[date]) {
       groups[date] = [];
     }
-    groups[date].push(reservations);
+    groups[date].push(reservation);
     return groups;
   }, {});
 
@@ -70,46 +50,50 @@ const Reservations = () => {
   });
 
   useEffect(() => {
-    const reserved = reservations.filter(
-      (item) => item.status === "Reserved"
+    const active = reservations.filter(
+      (item) => item.status === "active"
     ).length;
-    const ready = reservations.filter(
-      (item) => item.status === "Ready for pickup"
-    ).length;
-    const delivered = reservations.filter(
-      (item) => item.status === "Delivered"
+    const ready = reservations.filter((item) => item.status === "ready").length;
+    const issued = reservations.filter(
+      (item) => item.status === "issued"
     ).length;
 
-    setReservedCount(reserved);
+    setActiveCount(active);
     setReadyCount(ready);
-    setDeliveredCount(delivered);
+    setIssuedCount(issued);
   }, [reservations]);
+
+  useEffect(() => {
+    handleReservations();
+  }, []);
 
   return (
     <div className="content">
       <h2 className="heading"> Reservations - Food Provider </h2>
       <div className="count-container">
         <div>
-          <p className="count"> {reservedCount} </p>
-          <h3> reserved </h3>
+          <p className="count"> {activeCount} </p>
+          <h3> Reserved </h3>
         </div>
         <div>
           <p className="count"> {readyCount} </p>
-          <h3> ready for pickup </h3>
+          <h3> Ready for pickup </h3>
         </div>
         <div>
-          <p className="count"> {deliveredCount} </p>
-          <h3> delivered </h3>
+          <p className="count"> {issuedCount} </p>
+          <h3> Delivered </h3>
         </div>
       </div>
-      {groupedReservations.map((item, index) => (
-        <div className="list" key={index}>
+      {groupedReservations.map((item) => (
+        <div className="list" key={item.date}>
           <h4> {item.date} </h4>
           <ul>
             {item.reservations.map((reservation, index) => (
               <li
                 onClick={() => {
-                  navigate(`/reservations/${reservation.id}`);
+                  navigate(`/reservations/${reservation.id}`, {
+                    state: { id: reservation.id },
+                  });
                 }}
                 className="list-item"
                 id={`reservation-${reservation.id}`}
@@ -120,12 +104,12 @@ const Reservations = () => {
                   <strong> {reservation.id} </strong>{" "}
                 </div>
                 <div>
-                  <div> {reservation.offerName} </div>
+                  <div className="text-center"> {reservation.type} </div>
                   <div>
                     {" "}
-                    {reservation.time} - {reservation.status}{" "}
+                    {reservation.reservation_date} - {reservation.status}{" "}
                   </div>
-                  <div> {reservation.foodLover} </div>
+                  <div className="text-center"> {reservation.user_name} </div>
                 </div>
                 <div>
                   <img className="icon" src={forward_icon} />
