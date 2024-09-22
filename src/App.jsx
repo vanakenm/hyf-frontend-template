@@ -143,7 +143,7 @@ function App() {
               login User
             </button>
             <button onClick={() => addBoxes()} className="btn">
-              add boxes
+              add  some boxes
             </button>
             <button onClick={() => changeStatus()} className="btn">
               change status
