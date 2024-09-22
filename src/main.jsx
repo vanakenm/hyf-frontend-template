@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       { path: "/reservations", element: <Reservations /> }, // Food provider reservations page
       { path: "/reservations/:id", element: <ReservationDetails /> }, // Food provider reservation details page
       { path: "/offers", element: <Offers /> }, // Food provider offers page
-      { path: "/offers/:id", element: <OfferDetails /> }, // Food provider offer details page
+      { path: "/offers/:provider_id", element: <OfferDetails /> }, // Food provider offer details page
     ],
   },
 ]);

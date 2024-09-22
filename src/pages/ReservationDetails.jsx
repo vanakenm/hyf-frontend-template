@@ -1,59 +1,40 @@
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useLocation, useParams } from "react-router";
 import back_icon from "../assets/back_icon.png";
+import { useEffect, useState } from "react";
+import api from "../api/reservations";
 
 const ReservationDetails = () => {
   const navigate = useNavigate();
-
-  const dummyReservations = [
-    {
-      id: 1,
-      description:
-        "Savour the perfect balance of crispy, golden-brown skin and tender, succulent meat in our homemade fried chicken. Every bite is a delicious adventure.",
-      date: "Sept 16 2024",
-      time: "12:15",
-      offerName: "Fried chicken",
-      units: 10,
-      status: "Reserved",
-      foodLover: "Mark Adams",
-    },
-    {
-      id: 2,
-      description:
-        "Our pasta is made daily with the freshest ingredients, ensuring a delicious and satisfying meal. Choose from a variety of classic and innovative dishes.",
-      date: "Sept 16 2024",
-      time: "14:30",
-      offerName: "Pasta",
-      units: 5,
-      status: "Ready for pickup",
-      foodLover: "Jane Anderson",
-    },
-    {
-      id: 3,
-      description:
-        "Our rice is carefully selected and prepared to ensure a tender and flavorful accompaniment to any meal.",
-      date: "Sept 15 2024",
-      time: "13:00",
-      offerName: "Rice",
-      units: 7,
-      status: "Delivered",
-      foodLover: "Tony Miguel",
-    },
-  ];
+  const { state } = useLocation();
+  const [reservations, setReservations] = useState([]);
 
   const { id } = useParams();
-  const reservation = dummyReservations.find(
-    (reservation) => reservation.id === Number(id)
-  );
+
+  const handleReservationDetails = async () => {
+    try {
+      const response = await api.get(`/reservations/provider/${id}`);
+      const data = await response.json();
+      console.log(data);
+      setReservations(data);
+    } catch (error) {
+      return `${error.message} - There is an error fetching the reservation details`;
+    }
+  };
 
   const handleButtonText = () => {
-    if (reservation.status === "Reserved") {
+    if (reservations.status === "active") {
       return <button className="status"> Ready for pickup </button>;
-    } else if (reservation.status === "Ready for pickup") {
+    } else if (reservations.status === "ready") {
       return <button className="status"> Delivered </button>;
     } else {
       return null;
     }
   };
+
+  useEffect(() => {
+    console.log(state);
+    handleReservationDetails();
+  }, []);
 
   return (
     <div>
@@ -63,26 +44,26 @@ const ReservationDetails = () => {
         src={back_icon}
       />
       <div>
-        <h2 className="heading"> Reservation for {reservation.offerName} </h2>
-        <p className="date"> {reservation.date} </p>
-        <p className="description"> {reservation.description} </p>
+        <h2 className="heading"> Reservation for {reservations.type} </h2>
+        <p className="date"> {reservations.date} </p>
+        <p className="description"> {reservations.description} </p>
         <p className="food-lover">
           {" "}
-          Reserved by: <strong>{reservation.foodLover}</strong>{" "}
+          Reserved by: <strong>{reservations.user_name}</strong>{" "}
         </p>
       </div>
       <div className="details">
         <div>
           <p>
             {" "}
-            <strong>{reservation.units}</strong>{" "}
+            <strong>{reservations.units}</strong>{" "}
           </p>
           <p> units </p>
         </div>
         <div>
           <p>
             {" "}
-            <strong>{reservation.status}</strong>{" "}
+            <strong>{reservations.status}</strong>{" "}
           </p>
           <p> status </p>
         </div>
