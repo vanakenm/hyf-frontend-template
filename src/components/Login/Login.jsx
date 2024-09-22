@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { Nav } from "react-bootstrap";
-import "./login.css";
+import "./Login.css"
 
 const Login = () => {
   const {
