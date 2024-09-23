@@ -1,72 +1,55 @@
-import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import './makeReservation.css';
-import { updateRequest, getRequest } from '../dataFoodLover';  // Import both updateRequest and getRequest
 
 const MakeReservation = () => {
-  const { state: reservedata } = useLocation();  // Get the offer data passed from OffersDetailListFunction.jsx
+  const { state: offer } = useLocation();  // Get the offer details
+  const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const [pickupTime, setPickupTime] = useState('12:00');
-  const navigate = useNavigate();
 
-  // Refresh the page only once when the component is first loaded
-  useEffect(() => {
-    if (!sessionStorage.getItem('reloaded')) {
-      window.location.reload();
-      sessionStorage.setItem('reloaded', 'true');  // Set a flag to prevent infinite reload
-    }
-  }, []);
-
-  const handleReserveClick = () => {
-    // Create a new reservation object
-    const newReservation = {
-      name: reservedata.name,
-      description: reservedata.description,
-      pickuptime: pickupTime,
-      unit: quantity,
+  const handleConfirm = () => {
+    // Send reservation data to the backend (mocked here)
+    const reservationData = {
+      provider_id: offer.provider_id,
+      quantity,
+      pickupTime,
+      date: offer.date
     };
-
-    // Update the request array in dataFoodLover.js
-    updateRequest(newReservation);  // Call the function to update the request array
+    console.log('Reservation confirmed:', reservationData);
     
-    // Navigate to the reservation list (or any other page)
+    // Navigate back to reservation page or success page
     navigate('/reservation-list');
   };
 
   return (
     <div className="make-reservation">
-      <h1>Make a reservation for</h1>
-      <h2>{reservedata.name}</h2>
-      <h2>{reservedata.restaurant}</h2>
-      <h4>{reservedata.date}</h4>
-      <p>{reservedata.description}</p>
-      <h4>{reservedata.unit} units left</h4>
+      <h1>Make a reservation for {offer.provider_name}</h1>
+      <p>{offer.standard_description}</p>
+      <p>{offer.vegan_description}</p>
+      <p>{offer.diabetic_description}</p>
 
-      <div>
+      <div className="reservation-details">
         <label>Quantity</label>
-        <select
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-        >
-          <option value="" disabled>Select Quantity</option>
-          {Array.from({ length: reservedata.unit }, (_, i) => i + 1).map((num) => (
-            <option key={num} value={num}>
-              {num}
-            </option>
+        <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+          {[...Array(offer.standard_unit + 1).keys()].map((q) => (
+            <option key={q} value={q}>{q}</option>
           ))}
         </select>
-      </div>
 
-      <div>
-        <label>Pickup time</label>
+        <label>Pickup Time</label>
         <select value={pickupTime} onChange={(e) => setPickupTime(e.target.value)}>
-          <option value="12:00">10:00</option>
-          <option value="13:00">12:00</option>
-          <option value="14:00">18:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          {/* Add more pickup times as needed */}
         </select>
       </div>
 
-      <button onClick={handleReserveClick}>Confirm Reservation</button>
+      <div className="reservation-actions">
+        <button onClick={() => navigate(-1)}>Cancel</button>
+        <button onClick={handleConfirm}>Confirm</button>
+      </div>
     </div>
   );
 };

@@ -1,57 +1,69 @@
+/* OffersListFunction.css */
+
 .offers-list {
-  width: 1600px;
-  margin: 40px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: rgb(244, 248, 250);
-}
-
-.offers-list h1 {
-  font-size: 38px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.offers-list h3 {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 20px;
+  width: 80%;  /* Ensure the list takes up the full width of the parent container */
+  max-width: 80%;  /* Limit the maximum width for larger screens */
+  margin: 0 auto;  /* Center the offers list horizontally */
+  padding: 20px;  /* Add some padding around the list */
+  display: flex;  /* Use flexbox for layout control */
+  flex-direction: column;  /* Stack offers vertically */
+  align-items: center;  /* Center items horizontally */
+  background-color: hsl(0, 0%, 96%);
 }
 
 .offer-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 500px; /* Adjusted width */
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  width: 100%;  /* Make each offer item take full width of the parent container */
+  max-width: 100%;  /* Set a max-width to keep the layout clean on large screens */
+  background-color: #88ddac;  /* Light background to differentiate from the rest of the page */
+  border: 1px solid #007ba7;  /* Add a border to make the offers visually distinct */
+  padding: 15px;  /* Add some space inside the offer box */
+  margin: 10px 0;  /* Add space between each offer */
+  border-radius: 8px;  /* Slightly round the corners for a softer look */
+  cursor: pointer;  /* Show a pointer cursor on hover */
+  transition: background-color 0.3s ease;  /* Smooth background color change on hover */
 }
 
 .offer-item:hover {
-  background-color: #f0f0f0;
+  background-color: #e6f7ff;  /* Lighten background color on hover */
 }
 
-.offer-item-name {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
+.offer-item h2 {
+  font-size: 1.5rem;  /* Adjust the font size for offer names */
+  margin: 0 0 10px;  /* Add space below the heading */
+  color: #333;  /* Dark text color for contrast */
 }
 
-.offer-item-units {
-  font-size: 14px;
-  color: #777;
+.offer-item p {
+  font-size: 1rem;  /* Regular font size for additional details */
+  color: #666;  /* Slightly lighter text for contrast */
 }
 
-.offer-item-arrow {
-  font-size: 20px;
-  color: #007bff;
+h1 {
+  font-size: 2rem;  /* Main heading size */
+  color: #000;
+  text-align: center;  /* Center the heading */
+  margin-bottom: 20px;  /* Add some space below the heading */
 }
 
-.offer-item-arrow:hover {
-  color: #0056b3;
+h3 {
+  font-size: 1.2rem;
+  color: #007ba7;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .offer-item {
+    max-width: 100%;  /* Full width on small screens */
+    padding: 10px;  /* Reduce padding for smaller screens */
+  }
+
+  h1 {
+    font-size: 1.5rem;  /* Smaller heading on small screens */
+  }
+
+  .offer-item h2 {
+    font-size: 1.2rem;  /* Smaller offer name size on small screens */
+  }
 }

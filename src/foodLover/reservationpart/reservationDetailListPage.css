@@ -1,0 +1,81 @@
+/* reservationDetailPage.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .reserved-detail {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  h4 {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .status-section {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .status-section h2 {
+    color: #007bff;
+  }
+  
+  .status-section p {
+    color: #666;
+  }
+  
+  @media (max-width: 600px) {
+    .reserved-detail {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.1rem;
+    }
+  
+    h4 {
+      font-size: 0.95rem;
+    }
+  
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  

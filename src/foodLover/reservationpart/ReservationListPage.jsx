@@ -1,16 +1,37 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { reserved } from '../dataFoodLover'; 
-import './reservationListPage.css'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Re-added to handle navigation to the details page
+import './reservationListPage.css';
+import reservationApi from '../../api/reservations.js';  // Your API handler
 
 const ReservationListPage = () => {
   const navigate = useNavigate();
+  const [reservations, setReservations] = useState([]);
 
-  // Separate reservations into "Open" and "Archive" (Delivered)
-  const openReservations = reserved.filter(
+  const params = {
+    startDate: "2024-09-14",
+    endDate: "2024-09-14",
+  };
+
+  const handleUserReservations = async () => {
+    try {
+      const res = await reservationApi.getUser(1, params);
+      const data = await res.json();
+      console.log(data);
+      setReservations(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    handleUserReservations();
+  }, []);
+
+  // Separate reservations into "Open" (Reserved, Ready for pickup) and "Archive" (Delivered)
+  const openReservations = reservations.filter(
     (reservation) => reservation.status !== 'Delivered'
   );
-  const archiveReservations = reserved.filter(
+  const archiveReservations = reservations.filter(
     (reservation) => reservation.status === 'Delivered'
   );
 
@@ -31,7 +52,7 @@ const ReservationListPage = () => {
             onClick={() => handleClick(reservation)}
           >
             <div className="reservation-row">
-              <span>{reservation.name}</span> - <span>{reservation.restaurant}</span>
+              <span>{reservation.provider_name}</span> - <span>{reservation.type}</span>
             </div>
             <div className="reservation-row">
               <span>{reservation.status}</span>
@@ -39,7 +60,10 @@ const ReservationListPage = () => {
           </div>
         ))
       ) : (
-        <p>You don't have open reservations at the moment...</p>
+        <div>
+          <p>You don't have open reservations at the moment...</p>
+          <button onClick={() => navigate('/offerslover')}>Check out to day's offers</button>
+        </div>
       )}
 
       {/* Archive Section */}
@@ -52,7 +76,7 @@ const ReservationListPage = () => {
             onClick={() => handleClick(reservation)}
           >
             <div className="reservation-row">
-              <span>{reservation.name}</span> - <span>{reservation.restaurant}</span>
+              <span>{reservation.provider_name}</span> - <span>{reservation.type}</span>
             </div>
             <div className="reservation-row">
               <span>{reservation.status}</span>

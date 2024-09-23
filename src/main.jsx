@@ -15,13 +15,12 @@ import ReservationListPage from "./foodLover/reservationpart/ReservationListPage
 import OffersListFunction from "./foodLover/offersFunc/OffersListFunction.jsx";
 import OffersDetailListFunction from "./foodLover/offersFunc/OffersDetailListFunction.jsx";
 import MakeReservation from "./foodLover/offersFunc/MakeReservation.jsx";
-import OfferTotal from "./foodLover/HomeLOver/OfferTotalFunc.jsx";
 import FooterNav from "./foodLover/FooterNavLover/FooterNavLover.jsx";
 import HomePageLover from "./foodLover/HomeLOver/HomePageLover.jsx";
-import ReservedList from "./foodLover/HomeLOver/ReservedListFunc.jsx";
 import Layout from "./Layout.jsx";
 import ReservationDetailPage from "./foodLover/reservationpart/ReservationDetailListPage.jsx";
-import ReservedDetailPage from "./foodLover/HomeLOver/ReservedDetailPage.jsx";
+
+
 
 const router = createBrowserRouter([
   {
@@ -37,15 +36,12 @@ const router = createBrowserRouter([
       { path: "/offers", element: <Offers /> }, // Food provider offers page
       { path: "/offers/:id", element: <OfferDetails /> }, // Food provider offer details page
       { path: "/reservation-list", element: <ReservationListPage /> },
-      { path: "/reserved-detail", element: <ReservedDetailPage /> },
       { path: "/reservation-detail", element: <ReservationDetailPage /> },
       { path: "/offerslover", element: <OffersListFunction /> },
       { path: "/offers-detail", element: <OffersDetailListFunction /> },
       { path: "/make-reservation", element: <MakeReservation /> },
-      { path: "/offersTotal", element: <OfferTotal /> },
       { path: "/foodLoverNav", element: <FooterNav /> },
-      { path: "/homePageLover", element: <HomePageLover /> }, // Combined layout page
-      { path: "/foodLoverNav", element: <ReservedList /> },
+      { path: "/homePageLover", element: <HomePageLover /> }      
     ],
   },
 ]);

@@ -1,60 +1,37 @@
-/* OffersDetailListFunction.css */
-
-
+/* offersDetailListFunction.css */
 .offer-detail {
-  max-width: 600px;
-  margin: 150px;
+  background-color: #fffaf0; /* Light beige background */
   padding: 20px;
+  border-radius: 8px;
   font-family: Arial, sans-serif;
 }
 
 .offer-detail h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 10px 0;
+  color: #8b4513; /* Saddle brown text for provider name */
+  text-align: center;
 }
 
 .offer-detail h4 {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 20px;
-  background-color: #fcd34d;
+  color: #d2691e; /* Chocolate color for the date */
+  text-align: center;
 }
 
 .offer-detail p {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.offer-detail h1:last-of-type {
-  font-size: 32px;
-  color: #111;
-  margin-bottom: 10px;
+  color: #a0522d; /* Sienna for descriptions */
+  margin: 10px 0;
 }
 
 .offer-detail button {
-  background-color: #fcd34d;
-  color: rgb(3, 3, 3);
+  background-color: #d2691e; /* Chocolate button */
+  color: white;
   border: none;
-  padding: 10px 15px;
-  font-size: 16px;
+  padding: 10px 20px;
+  margin-left: 46%;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  transition: background-color 0.3s ease;
 }
 
-
-.offer-detail button + button {
-  background-color: #28a745;
-  margin-top: 15px;
-}
-
-.offer-detail button + button:hover {
-  background-color: #218838;
+.offer-detail button:hover {
+  background-color: #a0522d; /* Darker brown on hover */
 }

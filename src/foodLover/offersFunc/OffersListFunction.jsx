@@ -1,16 +1,33 @@
-// OffersListFunction.jsx
-
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { offers } from '../dataFoodLover';  
-import './offersListFunction.css'
-
+import offersApi from '../../api/offers.js';
+import './offersListFunction.css';
 
 const OffersListFunction = () => {
+  const [offers, setOffers] = useState([]);
   const navigate = useNavigate();
 
+  const params = {
+    startDate: "2024-09-14",
+    endDate: "2024-09-14",
+  };
+
+  const handleOffers = async () => {
+    try {
+      const res = await offersApi.get(params);
+      const offersData = await res.json();
+      setOffers(offersData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleOffers();
+  }, []);
+
   const handleOfferClick = (offer) => {
-    navigate('/offers-detail', { state: offer });  // Pass the clicked offer to the OffersDetailListFunction.jsx
+    navigate('/offers-detail', { state: offer });  // Navigate to the Offer Detail page
   };
 
   return (
@@ -21,8 +38,8 @@ const OffersListFunction = () => {
         {offers.map((offer, index) => (
           <li key={index} className="offer-item" onClick={() => handleOfferClick(offer)}>
             <div>
-              <h2>{offer.name} - {offer.restaurant}</h2>
-              <p>{offer.unit} units left</p>
+              <h2>{offer.provider_name}</h2>
+              <p>{offer.standard_unit} standard units, {offer.vegan_unit} vegan units, {offer.diabetic_unit} diabetic units left</p>
             </div>
           </li>
         ))}
