@@ -1,0 +1,47 @@
+.homepage-lover {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .offers-summary {
+    margin-bottom: 30px;
+  }
+  
+  .offers-totals {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .check-offers-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 50%;
+  }
+  
+  .check-offers-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .reservations-section {
+    margin-top: 40px;
+  }
+  
+  .reservation-item {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #b5e7b0;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .reservation-item:hover {
+    background-color: #e0e0e0;
+  }
+  

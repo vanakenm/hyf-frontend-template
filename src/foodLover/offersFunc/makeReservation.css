@@ -1,72 +1,56 @@
+/* makeReservation.css */
 .make-reservation {
-  max-width: 1600px;
-  margin: 100px; 
+  background-color: #f5f5f5; /* Light gray background */
   padding: 20px;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
 }
 
 .make-reservation h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  color: #333; /* Dark gray text */
   text-align: center;
-  color: #333;
-}
-
-.make-reservation h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #555;
-}
-
-.make-reservation h4 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #777;
 }
 
 .make-reservation p {
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #666;
+  color: #666; /* Medium gray for descriptions */
 }
 
-.make-reservation div {
-  margin-bottom: 20px;
+.reservation-details label {
+  color: #333; /* Dark gray labels */
+  font-weight: bold;
 }
 
-.make-reservation label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: #555;
-}
-
-.make-reservation input[type="number"],
-.make-reservation select {
-  width: 80%;
+.reservation-details select {
   padding: 10px;
-  font-size: 14px;
+  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 10px;
-  background-color: #fff;
+  width: 100%;
 }
 
-.make-reservation button {
-  width: 20%;
-  padding: 12px;
-  margin-left: 30%;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #fcd34d;
-  color: white;
+.reservation-actions button {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: none;
+  font-size: 16px;
 }
 
-.make-reservation button:hover {
-  background-color: #524ec5;
+.reservation-actions button:nth-child(1) {
+  background-color: #999; /* Gray Cancel button */
+  color: white;
+}
+
+.reservation-actions button:nth-child(1):hover {
+  background-color: #777; /* Darker gray on hover */
+}
+
+.reservation-actions button:nth-child(2) {
+  background-color: #28a745; /* Green Confirm button */
+  color: white;
+}
+
+.reservation-actions button:nth-child(2):hover {
+  background-color: #218838; /* Darker green on hover */
 }
