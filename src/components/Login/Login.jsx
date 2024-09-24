@@ -3,15 +3,33 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { Nav } from "react-bootstrap";
 import "./Login.css"
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+
+    axios.post("http://cfood.obereg.net:5000/auth/login", {login:data.email,password:data.password})
+      .then(res=>{ 
+        if (res.data.role=="provider"){
+          navigate('/offers')
+        }
+        if (res.data.role=="user"){
+          navigate('/reservations')// i have to change to food lover reservation
+        }
+        
+      })
+      .catch(err=>console.log(err))
+  }
+    
 
 
   return (

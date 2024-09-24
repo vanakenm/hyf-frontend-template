@@ -3,12 +3,13 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from "react-hook-form";
 import { Nav } from 'react-bootstrap';
 import './register.css';
-//import axios from 'axios';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Register = ()=>{
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,11 +17,31 @@ const Register = ()=>{
   } = useForm()
 
   const onSubmit = (data) => {
+    if (data.userType=='Food lover'){
+
+      axios.post("http://cfood.obereg.net:5000/auth/register/user", data)
+      .then(res=>{ 
+        if (res.data.id){
+          navigate('/login')
+        }
+        console.log(res.data)
+      })
+      .catch(err=>console.log(err))
+
+    }else{
+      axios.post("http://cfood.obereg.net:5000/auth/register/provider", data)
+      .then(res=>{
+        if (res.data.id){
+          navigate('/login')
+        }
+        console.log(res.data) 
+      }
+       )
+      .catch(err=>console.log(err))
+    }
     console.log(data)
 
-    axios.post("http://localhost:5000/auth/register/user", data)
-    .then(res=>console.log(res.data))
-    .catch(err=>console.log(err))
+   
   }
 
   return (
@@ -48,6 +69,12 @@ const Register = ()=>{
         {errors.name && errors.name.type === "required" && (
         <span className="text-danger"> Name is required</span>
       )}
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Address</Form.Label>
+        <Form.Control {...register("address")}type="text" placeholder="Enter address" />
+        
       </Form.Group>
 
 
