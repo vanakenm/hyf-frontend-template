@@ -18,6 +18,13 @@
   list-style-type: none;
   padding: 0;
   width: 14vw;
+      box-shadow: var(--shadow-4);
+
+}
+
+.offer-details ul:hover {
+    box-shadow: var(--shadow-1);
+
 }
 
 .offer-info {
@@ -45,8 +52,11 @@
 .text-center-title {
   margin-top: 2rem;
   margin-bottom: 2rem;
+        box-shadow: var(--shadow-2);
+        height: 2.5rem;
 }
 
  .offer-label {
   width: 5vw;
 }
+
