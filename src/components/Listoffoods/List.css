@@ -5,28 +5,24 @@
   gap: 16px; 
 }
 
-.offer-item {
-  margin: 8px;
-  padding: 6px;
+.offer-items {
   background-color: #f9f9f9;
   border-radius: 6px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  max-width: 250px; 
-  flex: 1 1 200px; 
+  flex: wrap; 
+  width: 14vw;
 }
 
 .offer-details ul {
   list-style-type: none;
   padding: 0;
+  width: 14vw;
 }
 
 .offer-info {
-  margin-bottom: 6px;
-  padding: 4px;
+  padding: 1rem;
   background-color: #fff;
-  border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,4 +40,13 @@
 .offer-info span {
   display: inline-block;
   margin-right: 5px;
+}
+
+.text-center-title {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+ .offer-label {
+  width: 5vw;
 }
