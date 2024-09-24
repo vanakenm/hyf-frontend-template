@@ -18,13 +18,13 @@ const Reservations = () => {
   const navigate = useNavigate();
 
   // Counters for the different status
-  const [activeCount, setActiveCount] = useState(0);
+  const [reservedCount, setReservedCount] = useState(0);
   const [readyCount, setReadyCount] = useState(0);
-  const [issuedCount, setIssuedCount] = useState(0);
+  const [deliveredCount, setDeliveredCount] = useState(0);
 
   const handleReservations = async () => {
     try {
-      const response = await api.get(1, params);
+      const response = await api.get(3, params);
       const data = await response.json();
       console.log(data);
       setReservations(data);
@@ -50,17 +50,19 @@ const Reservations = () => {
   });
 
   useEffect(() => {
-    const active = reservations.filter(
-      (item) => item.status === "active"
+    const reserved = reservations.filter(
+      (item) => item.status === "Reserved"
     ).length;
-    const ready = reservations.filter((item) => item.status === "ready").length;
-    const issued = reservations.filter(
-      (item) => item.status === "issued"
+    const ready = reservations.filter(
+      (item) => item.status === "Ready for Pickup"
+    ).length;
+    const delivered = reservations.filter(
+      (item) => item.status === "Delivered"
     ).length;
 
-    setActiveCount(active);
+    setReservedCount(reserved);
     setReadyCount(ready);
-    setIssuedCount(issued);
+    setDeliveredCount(delivered);
   }, [reservations]);
 
   useEffect(() => {
@@ -72,7 +74,7 @@ const Reservations = () => {
       <h2 className="heading"> Reservations - Food Provider </h2>
       <div className="count-container">
         <div>
-          <p className="count"> {activeCount} </p>
+          <p className="count"> {reservedCount} </p>
           <h3> Reserved </h3>
         </div>
         <div>
@@ -80,7 +82,7 @@ const Reservations = () => {
           <h3> Ready for pickup </h3>
         </div>
         <div>
-          <p className="count"> {issuedCount} </p>
+          <p className="count"> {deliveredCount} </p>
           <h3> Delivered </h3>
         </div>
       </div>
@@ -91,9 +93,7 @@ const Reservations = () => {
             {item.reservations.map((reservation, index) => (
               <li
                 onClick={() => {
-                  navigate(`/reservations/${reservation.id}`, {
-                    state: { id: reservation.id },
-                  });
+                  navigate(`/reservations/${reservation.id}`);
                 }}
                 className="list-item"
                 id={`reservation-${reservation.id}`}

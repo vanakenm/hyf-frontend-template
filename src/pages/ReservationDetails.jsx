@@ -1,43 +1,68 @@
-import { useNavigate, useLocation, useParams } from "react-router";
-import back_icon from "../assets/back_icon.png";
+import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import api from "../api/reservations";
+import back_icon from "../assets/back_icon.png";
+import reservation_icon from "../assets/reservation_icon.png";
+import offers_icon from "../assets/offers_icon.png";
+import logout_icon from "../assets/logout_icon.png";
 
 const ReservationDetails = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const [reservations, setReservations] = useState([]);
-
   const { id } = useParams();
+  const params = {
+    startDate: "2024-09-14",
+    endDate: "2024-09-14",
+  };
+  const [reservations, setReservations] = useState({});
 
   const handleReservationDetails = async () => {
     try {
-      const response = await api.get(`/reservations/provider/${id}`);
+      const response = await api.get(3, params);
       const data = await response.json();
-      console.log(data);
-      setReservations(data);
+      data.map((r) => {
+        if (r.id.toString() === id) {
+          setReservations(r);
+        }
+      });
     } catch (error) {
-      return `${error.message} - There is an error fetching the reservation details`;
+      return `There is an error fetching the reservation details`, error;
+    }
+  };
+
+  const updateStatus = () => {
+    if (reservations.status === "Reserved") {
+      setReservations((prev) => ({ ...prev, status: "Ready for Pickup" }));
+    } else if (reservations.status === "Ready for Pickup") {
+      setReservations((prev) => ({ ...prev, status: "Delivered" }));
     }
   };
 
   const handleButtonText = () => {
-    if (reservations.status === "active") {
-      return <button className="status"> Ready for pickup </button>;
-    } else if (reservations.status === "ready") {
-      return <button className="status"> Delivered </button>;
+    if (reservations.status === "Reserved") {
+      return (
+        <button onClick={updateStatus} className="status">
+          {" "}
+          Ready for pickup{" "}
+        </button>
+      );
+    } else if (reservations.status === "Ready for Pickup") {
+      return (
+        <button onClick={updateStatus} className="status">
+          {" "}
+          Delivered{" "}
+        </button>
+      );
     } else {
       return null;
     }
   };
 
   useEffect(() => {
-    console.log(state);
     handleReservationDetails();
   }, []);
 
   return (
-    <div>
+    <div className="content">
       <img
         onClick={() => navigate("/reservations")}
         className="back-icon"
@@ -45,8 +70,10 @@ const ReservationDetails = () => {
       />
       <div>
         <h2 className="heading"> Reservation for {reservations.type} </h2>
-        <p className="date"> {reservations.date} </p>
-        <p className="description"> {reservations.description} </p>
+        <p className="date">
+          {" "}
+          Reservation date: {reservations.reservation_date}{" "}
+        </p>
         <p className="food-lover">
           {" "}
           Reserved by: <strong>{reservations.user_name}</strong>{" "}
@@ -56,7 +83,7 @@ const ReservationDetails = () => {
         <div>
           <p>
             {" "}
-            <strong>{reservations.units}</strong>{" "}
+            <strong>{reservations.quantity}</strong>{" "}
           </p>
           <p> units </p>
         </div>
@@ -69,6 +96,20 @@ const ReservationDetails = () => {
         </div>
       </div>
       <div>{handleButtonText()}</div>
+      <div className="footer">
+        <div onClick={() => navigate("/reservations")}>
+          <img src={reservation_icon} />
+          <p> Reservations </p>
+        </div>
+        <div onClick={() => navigate("/offers")}>
+          <img src={offers_icon} />
+          <p> Offers </p>
+        </div>
+        <div onClick={() => navigate("/")}>
+          <img src={logout_icon} />
+          <p> Logout </p>
+        </div>
+      </div>
     </div>
   );
 };
