@@ -119,10 +119,22 @@ h4 {
     cursor: pointer;
 }
 
+.title-wrapper img {
+    display: block;
+    width: 16px;
+    margin-inline-start: 1rem;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
 .quantity-section {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.offers-description {
+    margin-inline-start: 2.8rem;
 }
 
 .footer {
@@ -133,7 +145,7 @@ h4 {
     bottom: 0;
     width: 100%;
     background-color: gainsboro;
-    padding: .5rem;
+    padding: .3rem;
 }
 
 .footer div {
