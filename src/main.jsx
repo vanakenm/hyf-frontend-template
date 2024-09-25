@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RecipesPage from "./RecipesPage.jsx";
 import Navigation from "./components/Navbar/NavBar.jsx";
 import Login from "./components/Login/Login.jsx";
-import Register from "./components/Registeration/Register.jsx";
+import Register from "./components/Registration/Register.jsx";
 import Reservations from "./pages/Reservations.jsx";
 import ReservationDetails from "./pages/ReservationDetails.jsx";
 import Offers from "./pages/Offers.jsx";
@@ -35,6 +35,7 @@ const router = createBrowserRouter([
       { path: "/reservations/:id", element: <ReservationDetails /> }, // Food provider reservation details page
       { path: "/offers", element: <Offers /> }, // Food provider offers page
       { path: "/offers/:id", element: <OfferDetails /> }, // Food provider offer details page
+      { path: "/Offer", element : <Offer /> }, // Food provider create offers page
       { path: "/reservation-list", element: <ReservationListPage /> },
       { path: "/reservation-detail", element: <ReservationDetailPage /> },
       { path: "/offerslover", element: <OffersListFunction /> },
