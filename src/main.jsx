@@ -19,6 +19,7 @@ import FooterNav from "./foodLover/FooterNavLover/FooterNavLover.jsx";
 import HomePageLover from "./foodLover/HomeLOver/HomePageLover.jsx";
 import Layout from "./Layout.jsx";
 import ReservationDetailPage from "./foodLover/reservationpart/ReservationDetailListPage.jsx";
+import CreateOffer from "./components/Create-offer/CreateOffer.jsx";
 
 
 
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       { path: "/reservations/:id", element: <ReservationDetails /> }, // Food provider reservation details page
       { path: "/offers", element: <Offers /> }, // Food provider offers page
       { path: "/offers/:id", element: <OfferDetails /> }, // Food provider offer details page
-      { path: "/Offer", element : <Offer /> }, // Food provider create offers page
+      { path: "/Offer", element : <CreateOffer /> }, // Food provider create offers page
       { path: "/reservation-list", element: <ReservationListPage /> },
       { path: "/reservation-detail", element: <ReservationDetailPage /> },
       { path: "/offerslover", element: <OffersListFunction /> },

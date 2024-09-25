@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { Nav } from "react-bootstrap";
 import "./Login.css";
+import { useNavigate } from "react-router";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,7 +23,7 @@ const Login = () => {
           navigate('/offers')
         }
         if (res.data.role=="user"){
-          navigate('/reservations')// i have to change to food lover reservation
+          navigate('/homePageLover')// i have to change to food lover reservation
         }
         
       })
