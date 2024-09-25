@@ -1,0 +1,56 @@
+/* makeReservation.css */
+.make-reservation {
+  background-color: #f5f5f5; /* Light gray background */
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.make-reservation h1 {
+  color: #333; /* Dark gray text */
+  text-align: center;
+}
+
+.make-reservation p {
+  color: #666; /* Medium gray for descriptions */
+}
+
+.reservation-details label {
+  color: #333; /* Dark gray labels */
+  font-weight: bold;
+}
+
+.reservation-details select {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.reservation-actions button {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+}
+
+.reservation-actions button:nth-child(1) {
+  background-color: #999; /* Gray Cancel button */
+  color: white;
+}
+
+.reservation-actions button:nth-child(1):hover {
+  background-color: #777; /* Darker gray on hover */
+}
+
+.reservation-actions button:nth-child(2) {
+  background-color: #28a745; /* Green Confirm button */
+  color: white;
+}
+
+.reservation-actions button:nth-child(2):hover {
+  background-color: #218838; /* Darker green on hover */
+}

@@ -12,6 +12,9 @@ const api = {
     const query = queryString(inputQuery);
     return http.get(`/reservations/user/${id}${query}`);
   },
+  changeStatus: (data) => {
+    return http.post(`/reservations/ready/all/`, data);
+  },
 };
 
 export default api;

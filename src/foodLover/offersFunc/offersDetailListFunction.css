@@ -1,0 +1,37 @@
+/* offersDetailListFunction.css */
+.offer-detail {
+  background-color: #fffaf0; /* Light beige background */
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.offer-detail h1 {
+  color: #8b4513; /* Saddle brown text for provider name */
+  text-align: center;
+}
+
+.offer-detail h4 {
+  color: #d2691e; /* Chocolate color for the date */
+  text-align: center;
+}
+
+.offer-detail p {
+  color: #a0522d; /* Sienna for descriptions */
+  margin: 10px 0;
+}
+
+.offer-detail button {
+  background-color: #d2691e; /* Chocolate button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 46%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.offer-detail button:hover {
+  background-color: #a0522d; /* Darker brown on hover */
+}

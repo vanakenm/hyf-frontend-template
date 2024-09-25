@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Nav } from "react-bootstrap";
 
 const CreateOffer = () => {
+  const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
   const [offer, setOffer] = useState({
     name: '',
     description: '',
-    date: '2024-09-16',
+    date: today,
     quantity: 1
   });
 
@@ -33,7 +35,7 @@ const CreateOffer = () => {
       setOffer({
         name: '',
         description: '',
-        date: '2024-09-16',
+        date: today,
         quantity: 1
       });
       setErrors({});
@@ -46,7 +48,7 @@ const CreateOffer = () => {
     setOffer({
       name: '',
       description: '',
-      date: '2024-09-16',
+      date: today,
       quantity: 1
     });
     setErrors({});
@@ -59,61 +61,65 @@ const CreateOffer = () => {
   };
 
   return (
-    <div>
-      <h1>Create a new offer</h1>
+    <div className="container mt-5">
+      <h1 className="mb-4">Create a new offer</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Name</label>
           <input
             type="text"
             id="name"
             name="name"
+            className="form-control"
             value={offer.name}
             onChange={handleChange}
             placeholder="Name of the offer"
           />
-          {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+          {errors.name && <p className="text-danger">{errors.name}</p>}
         </div>
 
-        <div>
-          <label htmlFor="description">Description</label>
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">Description</label>
           <textarea
             id="description"
             name="description"
+            className="form-control"
             value={offer.description}
             onChange={handleChange}
             placeholder="Description of the offer"
           />
-          {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>}
+          {errors.description && <p className="text-danger">{errors.description}</p>}
         </div>
 
-        <div>
-          <label htmlFor="date">Date</label>
+        <div className="mb-3">
+          <label htmlFor="date" className="form-label">Date</label>
           <input
             type="date"
             id="date"
             name="date"
+            className="form-control"
             value={offer.date}
             onChange={handleChange}
           />
-          {errors.date && <p style={{ color: 'red' }}>{errors.date}</p>}
+          {errors.date && <p className="text-danger">{errors.date}</p>}
         </div>
 
-        <div>
-          <label htmlFor="quantity">Quantity</label>
+        <div className="mb-3">
+          <label htmlFor="quantity" className="form-label">Quantity</label>
           <input
             type="number"
             id="quantity"
             name="quantity"
+            className="form-control"
             value={offer.quantity}
             onChange={handleChange}
             min="1"
           />
-          {errors.quantity && <p style={{ color: 'red' }}>{errors.quantity}</p>}
+          {errors.quantity && <p className="text-danger">{errors.quantity}</p>}
         </div>
 
-        <button type="submit">Create</button>
-        <button type="button" onClick={handleCancel}>Cancel</button>
+        <button type="submit" className="btn btn-primary me-2">Create</button>
+        <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
       </form>
     </div>
   );
