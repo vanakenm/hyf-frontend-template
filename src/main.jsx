@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
@@ -20,8 +21,7 @@ import HomePageLover from "./foodLover/HomeLOver/HomePageLover.jsx";
 import Layout from "./Layout.jsx";
 import ReservationDetailPage from "./foodLover/reservationpart/ReservationDetailListPage.jsx";
 import CreateOffer from "./components/Create-offer/CreateOffer.jsx";
-
-
+import OfferUpdate from "./components/Offer-update/OfferUpdate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +43,8 @@ const router = createBrowserRouter([
       { path: "/offers-detail", element: <OffersDetailListFunction /> },
       { path: "/make-reservation", element: <MakeReservation /> },
       { path: "/foodLoverNav", element: <FooterNav /> },
-      { path: "/homePageLover", element: <HomePageLover /> }      
+      { path: "/homePageLover", element: <HomePageLover /> },
+      { path: "/Offer-update", element: <OfferUpdate /> },        // Food provider update offer
     ],
   },
 ]);

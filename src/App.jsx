@@ -13,10 +13,11 @@ function App() {
   };
   useEffect(() => {
     getOffers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
      const intervalId = setInterval(getOffers, 10000); // 10 seconds
 
     return () => clearInterval(intervalId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getOffers = async () => {
     try {
