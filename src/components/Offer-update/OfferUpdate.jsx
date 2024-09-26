@@ -6,12 +6,14 @@ import "./offerUpdate.css"; // Assuming you have the CSS
 
 const UpdateOfferForm = () => {
   const [offer, setOffer] = useState({
-    name: '',
     description: '',
+    pickup_time: "17:00:00",
     startDate: "2024-09-14",
-      endDate: "2024-09-14",
+    endDate: "2024-09-14",
+    boxType: "Standard", // Default box type
   });
 
+  const [boxes, setBoxes] = useState([]); // State to hold box types
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
@@ -21,13 +23,15 @@ const UpdateOfferForm = () => {
         const data = response.data;
 
         if (data && data.boxes && data.boxes.length > 0) {
+          setBoxes(data.boxes); // Store all box types
           const standardBox = data.boxes.find(box => box.type === 'Standard');
-          setOffer(prevOffer => ({
-            ...prevOffer,
-            name: standardBox ? standardBox.type : '',
-            description: standardBox ? standardBox.description : '',
-            quantity: 12,
-          }));
+          if (standardBox) {
+            setOffer(prevOffer => ({
+              ...prevOffer,
+              name: standardBox.type,
+              description: standardBox.description,
+            }));
+          }
         }
       } catch (error) {
         console.error('Error fetching the offer data:', error);
@@ -40,6 +44,17 @@ const UpdateOfferForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setOffer({ ...offer, [name]: value });
+
+    // Update the description when box type changes
+    if (name === "boxType") {
+      const selectedBox = boxes.find(box => box.type === value);
+      if (selectedBox) {
+        setOffer(prevOffer => ({
+          ...prevOffer,
+          description: selectedBox.description,
+        }));
+      }
+    }
   };
 
   const handleSubmit = (event) => {
@@ -53,8 +68,10 @@ const UpdateOfferForm = () => {
     setOffer({
       name: '',
       description: '',
-      date: 'Sept 16th, 2024',
-      quantity: 0,
+      startDate: "2024-09-14", // Reset to default
+      endDate: "2024-09-14", // Reset to default
+      boxType: 'Standard', // Reset box type to default
+      pickup_time: "17:00:00", // Reset pickup time to default
     });
     alert('Offer update canceled');
     navigate("/"); // Redirect after canceling
@@ -64,17 +81,21 @@ const UpdateOfferForm = () => {
     <Form onSubmit={handleSubmit} className="update-offer-form">
       <h2>Update an Offer</h2>
 
-      <Form.Group controlId="formOfferName" className="mb-3">
-        <Form.Label>Name <span className="mandatory">*</span></Form.Label>
+      <Form.Group controlId="formOfferType" className="mb-3">
+        <Form.Label>Box Type <span className="mandatory">*</span></Form.Label>
         <Form.Control
-          type="text"
-          name="name"
-          value={offer.name}
+          as="select"
+          name="boxType"
+          value={offer.boxType}
           onChange={handleInputChange}
-          placeholder="Offer Name"
           required
-        />
+        >
+          {boxes.map((box) => (
+            <option key={box.type} value={box.type}>{box.type}</option>
+          ))}
+        </Form.Control>
       </Form.Group>
+
 
       <Form.Group controlId="formOfferDescription" className="mb-3">
         <Form.Label>Description <span className="mandatory">*</span></Form.Label>
@@ -87,26 +108,27 @@ const UpdateOfferForm = () => {
           required
         />
         <Form.Text className="text-muted">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+          Description of the selected box type will appear here.
         </Form.Text>
       </Form.Group>
 
-      <Form.Group controlId="formOfferDate" className="mb-3">
-        <Form.Label>Date</Form.Label>
+      <Form.Group controlId="formOfferStartDate" className="mb-3">
+        <Form.Label>Start Date <span className="mandatory">*</span></Form.Label>
         <Form.Control
-          type="text"
-          name="date"
-          value={offer.date}
-          readOnly
+          type="date"
+          name="startDate"
+          value={offer.startDate}
+          onChange={handleInputChange}
+          required
         />
       </Form.Group>
 
-      <Form.Group controlId="formOfferQuantity" className="mb-3">
-        <Form.Label>Quantity <span className="mandatory">*</span></Form.Label>
+      <Form.Group controlId="formOfferEndDate" className="mb-3">
+        <Form.Label>End Date <span className="mandatory">*</span></Form.Label>
         <Form.Control
-          type="number"
-          name="quantity"
-          value={offer.quantity}
+          type="date"
+          name="endDate"
+          value={offer.endDate}
           onChange={handleInputChange}
           required
         />
