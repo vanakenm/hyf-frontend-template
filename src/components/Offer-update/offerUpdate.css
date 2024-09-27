@@ -1,87 +1,110 @@
-/* Global Styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #343a40;
-}
-
-/* Form Container */
+/* General form styling */
 .update-offer-form {
-  max-width: 600px; /* Limit the width of the form */
-  margin: 50px auto; /* Center the form on the page */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   padding: 20px;
-  background-color: #ffffff; /* White background for the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form Heading */
+/* Form Title */
 .update-offer-form h2 {
-  text-align: center; /* Center the heading */
-  margin-bottom: 20px; /* Space below the heading */
-  font-size: 1.5rem; /* Font size for the heading */
-  color: #007bff; /* Primary color for the heading */
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* Form Group */
-.mb-3 {
-  margin-bottom: 1rem; /* Space between form groups */
+/* Form groups */
+.update-offer-form .form-group {
+  margin-bottom: 1.5rem;
 }
 
-/* Form Labels */
-.form-label {
-  font-weight: bold; /* Bold labels */
+/* Form labels */
+.update-offer-form .form-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #333;
 }
 
-/* Required Indicator */
-.mandatory {
-  color: red; /* Red color for required indicator */
+/* Required fields */
+.update-offer-form .mandatory {
+  color: #e63946;
+  margin-left: 4px;
 }
 
-/* Form Control Styles */
-.form-control {
-  border: 1px solid #ced4da; /* Light border */
-  border-radius: 5px; /* Rounded corners for inputs */
-  transition: border-color 0.2s; /* Smooth transition for border color */
+/* Input fields */
+.update-offer-form .form-control {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 0.6rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.form-control:focus {
-  border-color: #007bff; /* Change border color on focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Subtle shadow effect */
+/* Textarea */
+.update-offer-form textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
-/* Button Styles */
-.btn {
-  border-radius: 5px; /* Rounded corners for buttons */
-  font-weight: bold; /* Bold text for buttons */
+/* Helper text */
+.update-offer-form .form-text {
+  font-size: 0.85rem;
+  color: #666;
 }
 
-.btn-primary {
-  background-color: #007bff; /* Primary button color */
-  border-color: #007bff; /* Primary button border */
-}
-
-.btn-secondary {
-  background-color: #6c757d; /* Secondary button color */
-  border-color: #6c757d; /* Secondary button border */
-}
-
-.btn:hover {
-  opacity: 0.9; /* Slight transparency on hover */
-}
-
-/* Form Actions Container */
+/* Form actions (buttons) */
 .form-actions {
-  margin-top: 20px; /* Space above the action buttons */
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
-/* Responsive Styles */
-@media (max-width: 576px) {
+.form-actions .btn {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+/* Primary button (Save) */
+.form-actions .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.form-actions .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Secondary button (Cancel) */
+.form-actions .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.form-actions .btn-secondary:hover {
+  background-color: #565e64;
+  border-color: #434a4f;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
   .update-offer-form {
-    padding: 15px; /* Reduce padding for smaller screens */
+    padding: 15px;
   }
 
-  .update-offer-form h2 {
-    font-size: 1.25rem; /* Adjust heading size for smaller screens */
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
